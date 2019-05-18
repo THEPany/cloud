@@ -25,6 +25,11 @@ Route::domain(env('APP_DOMAIN'))->group(function () {
 
     Route::get('/', 'MarketingController')->name('marketing.index');
 
+    Route::post(
+        'braintree/webhook',
+        '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
+    );
+
     Route::middleware(['auth'])->group(function () {
 
         Route::get('home', 'HomeController@index')->name('home.index');
@@ -43,6 +48,9 @@ Route::domain(env('APP_DOMAIN'))->group(function () {
         Route::post('subscriptions', 'SubscriptionController@store')->name('subscriptions.store');
         Route::put('subscriptions', 'SubscriptionController@update')->name('subscriptions.update');
         Route::post('subscriptions/card', 'SubscriptionController@updateCard')->name('subscriptions.card');
+        Route::get('subscriptions/cancel', 'SubscriptionController@cancelSubscription')->name('subscriptions.cancel');
+        Route::post('subscriptions/resumeSubscription', 'SubscriptionController@resumeSubscription')->name('subscriptions.resumeSubscription');
+        Route::post('subscriptions/cancelNowSubscription', 'SubscriptionController@cancelNowSubscription')->name('subscriptions.cancelNowSubscription');
     });
 });
 

@@ -142,6 +142,7 @@
                 if (confirm('¿Desea enviar una invitación a este usuario para que sea parte de su organización?')) {
                     this.$inertia.post(this.route('organizations.send.invitation', {'organization': this.organization.id, 'user': this.value.id}), this.value);
                 }
+                this.value = '';
             }
         },
     }

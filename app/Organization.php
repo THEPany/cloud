@@ -16,6 +16,7 @@ class Organization extends Model
      *  Restriction Key
      */
     const RESTRICTION_ORGANIZATION = 'RESTRICTION_ORGANIZATION';
+    const RESTRICTION_CONTRIBUTOR = 'RESTRICTION.CONTRIBUTOR';
 
     /**
      * Set the user's first name.
@@ -39,19 +40,19 @@ class Organization extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function users()
+    public function contributors()
     {
         return $this->belongsToMany(User::class, 'contributors');
     }
 
     public function addContributor(User $user)
     {
-        $this->users()->attach($user->id);
+        $this->contributors()->attach($user->id);
     }
 
     public function removeContributor(User $user)
     {
-        $this->users()->detach($user->id);
+        $this->contributors()->detach($user->id);
     }
 
     public function scopeFilter($query, array $filters)

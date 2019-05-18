@@ -19,7 +19,7 @@ class OrganizationController extends Controller
     public function index()
     {
         $organizations = Organization::query()
-            ->whereHas('users', function ($query) {
+            ->whereHas('contributors', function ($query) {
                 $query->where('user_id', auth()->id());
             })
             ->orderBy('name')
@@ -64,7 +64,7 @@ class OrganizationController extends Controller
     public function edit(Organization $organization)
     {
         return Inertia::render('Organizations/Edit', [
-            'users' => User::whereNotin('id', $organization->users()->get()->map->id->toArray())->get()->map->only('id', 'name', 'email'),
+            'users' => User::whereNotin('id', $organization->contributors()->get()->map->id->toArray())->get()->map->only('id', 'name', 'email'),
             'organization' => [
                 'id' => $organization->id,
                 'user_id' => $organization->user_id,
@@ -77,7 +77,7 @@ class OrganizationController extends Controller
                 'country' => $organization->country,
                 'postal_code' => $organization->postal_code,
                 'deleted_at' => $organization->deleted_at,
-                'users' => $organization->users()->orderBy('name')->get()->map->only('id', 'name', 'email', 'phone'),
+                'users' => $organization->contributors()->orderBy('name')->get()->map->only('id', 'name', 'email', 'phone'),
             ],
         ]);
     }
@@ -116,6 +116,7 @@ class OrganizationController extends Controller
 
     public function sendInvitationLink(Organization $organization, User $user)
     {
+        abort_unless($this->restrictionContributor($organization), 403, 'Límite alcanzado, por favor actualice su plan.');
         Mail::to($user)->send(new OrganizationInvitationEmail($organization, $user));
         return Redirect::route('organizations.edit', $organization);
     }
@@ -143,11 +144,30 @@ class OrganizationController extends Controller
                 ->first();
 
             return Organization::query()
-                    ->whereHas('users', function ($query) {
+                    ->whereHas('contributors', function ($query) {
                         $query->where('user_id', auth()->id());
                     })->count() < $restriction->restriction_limit;
         }catch (\Exception $e) {
             return false;
         }
+    }
+
+    protected function restrictionContributor(Organization $organization)
+    {
+        try {
+            $plan = Plan::query()
+                ->whereBraintreePlan(auth()->user()->subscription('main')->braintree_plan)
+                ->first();
+
+            $restriction = Restriction::query()
+                ->whereRestrictionKeyAndPlanId(Organization::RESTRICTION_CONTRIBUTOR, $plan->id)
+                ->first();
+
+            return $organization->contributors()->count() < $restriction->restriction_limit;
+
+        }catch (\Exception $e) {
+            return false;
+        }
+
     }
 }

@@ -16,9 +16,9 @@ class CreateRestrictionsTable extends Migration
         Schema::create('restrictions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('plan_id');
-            $table->text('restriction_key');
+            $table->string('restriction_key');
             $table->integer('restriction_limit');
-            $table->unique(['plan_id', 'key']);
+            $table->unique(['plan_id', 'restriction_key']);
             $table->timestamps();
         });
     }
