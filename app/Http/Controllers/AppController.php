@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Organization;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Organization;
 
 class AppController extends Controller
 {
-    public function index($organization)
+    public function index($slug)
     {
         return Inertia::render('App/Index', [
-            'organization' => Organization::whereSlug($organization)->first()->only('name', 'slug')
+            'organization' => Organization::whereSlug($slug)->first()->only('name', 'slug')
         ]);
     }
 

@@ -10,24 +10,24 @@
                 </tr>
                 <tr v-for="organization in organizations.data" :key="organization.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <a class="px-6 py-4 flex items-center focus:text-indigo" :href="route('apps.index', organization.slug)">
+                        <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" :href="route('apps.index', organization.slug)">
                             {{ organization.name }}
-                        </a>
+                        </inertia-link>
                     </td>
                     <td class="border-t">
-                        <a class="px-6 py-4 flex items-center" :href="route('apps.index', organization.slug)" tabindex="-1">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('apps.index', organization.slug)" tabindex="-1">
                             {{ organization.email }}
-                        </a>
+                        </inertia-link>
                     </td>
                     <td class="border-t">
-                        <a class="px-6 py-4 flex items-center" :href="route('apps.index', organization.slug)" tabindex="-1">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('apps.index', organization.slug)" tabindex="-1">
                             {{ organization.user.name }}
-                        </a>
+                        </inertia-link>
                     </td>
                     <td class="border-t w-px">
-                        <a class="px-4 flex items-center" tabindex="-1">
+                        <inertia-link class="px-4 flex items-center" :href="route('apps.index', organization.slug)" tabindex="-1">
                             <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
-                        </a>
+                        </inertia-link>
                     </td>
                 </tr>
                 <tr v-if="organizations.data.length === 0">
