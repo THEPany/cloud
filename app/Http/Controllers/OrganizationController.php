@@ -3,19 +3,14 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use App\{Organization, Plan, Restriction, User};
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Mail\OrganizationInvitationEmail;
+use App\{Organization, Plan, Restriction, User};
 
 class OrganizationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
-
     public function index()
     {
         $organizations = Organization::query()
@@ -27,7 +22,7 @@ class OrganizationController extends Controller
             ->paginate()
             ->only('id', 'user_id', 'name', 'slug', 'email', 'phone', 'address', 'city', 'region', 'country', 'postal_code', 'deleted_at');
 
-        return Inertia::render('Organizations/Index', [
+        return Inertia::render('Organization/Index', [
             'filters' => Request::all('search', 'trashed'),
             'organizations' => $organizations,
         ]);
@@ -36,7 +31,7 @@ class OrganizationController extends Controller
 
     public function create()
     {
-        return Inertia::render('Organizations/Create');
+        return Inertia::render('Organization/Create');
     }
 
     public function store()
@@ -63,7 +58,7 @@ class OrganizationController extends Controller
 
     public function edit(Organization $organization)
     {
-        return Inertia::render('Organizations/Edit', [
+        return Inertia::render('Organization/Edit', [
             'users' => User::whereNotin('id', $organization->contributors()->get()->map->id->toArray())->get()->map->only('id', 'name', 'email'),
             'organization' => [
                 'id' => $organization->id,

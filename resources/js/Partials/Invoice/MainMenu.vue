@@ -1,9 +1,21 @@
 <template>
     <div>
         <div class="mb-4">
-            <inertia-link class="flex items-center group py-3" href="#')">
+            <inertia-link class="flex items-center group py-3" :href="route('invoice.home.index', $page.organization.slug)">
                 <icon name="home" class="w-4 h-4 mr-2" :class="isUrl($page.organization.slug + '/invoice/home') ? 'fill-white' : 'fill-green-light group-hover:fill-white'" />
                 <div :class="isUrl($page.organization.slug + '/invoice/home') ? 'text-white' : 'text-green-lighter group-hover:text-white'">Home</div>
+            </inertia-link>
+        </div>
+        <div class="mb-4">
+            <inertia-link class="flex items-center group py-3" :href="route('invoice.clients.index', $page.organization.slug)">
+                <icon name="client" class="w-4 h-4 mr-2" :class="isUrl($page.organization.slug + '/invoice/clients') ? 'fill-white' : 'fill-green-light group-hover:fill-white'" />
+                <div :class="isUrl($page.organization.slug + '/invoice/clients') ? 'text-white' : 'text-green-lighter group-hover:text-white'">Clientes</div>
+            </inertia-link>
+        </div>
+        <div class="mb-4">
+            <inertia-link class="flex items-center group py-3" :href="route('invoice.products.index', $page.organization.slug)">
+                <icon name="box" class="w-4 h-4 mr-2" :class="isUrl($page.organization.slug + '/invoice/products') ? 'fill-white' : 'fill-green-light group-hover:fill-white'" />
+                <div :class="isUrl($page.organization.slug + '/invoice/products') ? 'text-white' : 'text-green-lighter group-hover:text-white'">Productos</div>
             </inertia-link>
         </div>
     </div>

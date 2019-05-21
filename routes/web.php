@@ -57,6 +57,20 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Facturacion
-Route::middleware(['auth'])->prefix('{slug}/invoice')->group(function () {
+Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(function () {
     Route::get('home','Invoice\HomeController@index')->name('invoice.home.index');
+
+    // Product
+    Route::get('products', 'Invoice\ProductController@index')->name('invoice.products.index');
+    Route::get('products/create', 'Invoice\ProductController@create')->name('invoice.products.create');
+    Route::post('products', 'Invoice\ProductController@store')->name('invoice.products.store');
+    Route::get('products/{product}/edit', 'Invoice\ProductController@edit')->name('invoice.products.edit');
+    Route::put('products/{product}', 'Invoice\ProductController@update')->name('invoice.products.update');
+
+    // Client
+    Route::get('clients', 'Invoice\ClientController@index')->name('invoice.clients.index');
+    Route::post('clients', 'Invoice\ClientController@store')->name('invoice.clients.store');
+    Route::get('clients/create', 'Invoice\ClientController@create')->name('invoice.clients.create');
+    Route::put('clients/{client}', 'Invoice\ClientController@update')->name('invoice.clients.update');
+    Route::get('clients/{client}/edit', 'Invoice\ClientController@edit')->name('invoice.clients.edit');
 });

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use App\Model\Invoice\{Product, Client};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -53,6 +54,16 @@ class Organization extends Model
     public function removeContributor(User $user)
     {
         $this->contributors()->detach($user->id);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
     }
 
     public function scopeFilter($query, array $filters)

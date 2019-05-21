@@ -3,303 +3,89 @@
   <component name="ChangeListManager">
     <list default="true" id="e15f0b3a-59d6-43ad-9881-edf5f85c5653" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Organization.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Organization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/0.068beaf0f134dc00b5f1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.0b39802519f4177da468.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.23806a9740ae91556c47.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/0.709809cc6a4ad6fe7f15.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.814553cb9181cd532746.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.a232258b987bacb1c721.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.aca6a2d88e984d4fa2ac.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0.c62855dd8601d348b894.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/1.7051e4b26bf3f0380d63.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.07e0241f12d89937ed74.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.1e95ad2b5cefcf0feb82.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.2136208ebd1e0dd4d5f1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.749f7aa4a7bc08c7edcc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.97ca686ec2513ab99aad.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.9d32b41587ced6e3de3f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.a46d8ed0b07c68b9a709.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/10.c2ed2ec0fde47829ae47.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.007ed18de85e8b58f59f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.051714640d8dfb3e7e71.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.0529778cda25e8cf442a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.0c9b04e54318ab26dbf9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.0e3342063d531ec1a045.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.1229aa673f696ac4497f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.167c80724785e0418045.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.1a8da078bacdaa5e631a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.1e235744aec9131e2c9f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.20c47639c17bc83a8925.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.2430272ef2ff7b676f62.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.2b0c26f96d9318f97aef.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.2dbc930d644c2606fa2b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.2dc4040c7995126ae1c8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.2f497a431f2bc975d0b4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.323db29148df7620f209.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.3378523b05f9a08bbbb0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.3af615fb9a21981818ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.3b29ef7b2db69669fd70.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.3bd379bb09729e9e7bbf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.4b4e336a2bb7fd96a739.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.5115329c24196fe42752.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.53634a6d2859bec1467f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.5681263bfa60a1c660bf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.56f47a9608d5a9de922f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.577c2fc35fc22862a42d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.58c26d33f705f093723c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.5f9919f9414f658ac770.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.65cda9b421fd760c4290.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.664f8b75834d2f72e631.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.6e4e242bbce2cfc1ce41.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.73483c7eeb08bd09d0fd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.76aa300d31a6ea0f8ea7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.78475be7f81258facf79.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.7862c41e3af497af489a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.7a6e3a4948dff768cb71.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.81e411ccb687f59c7eb1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.878c36d5893b26d2e6a4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.93a18a77f958ac901ebc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.9cda67e2e2aab89895ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.9f9626e47306ec1ca47f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.a9517110042175ed1286.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.a968fac051b36a698f4a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.abfd4525a8584bdca50f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.ae0de22af34f543c6761.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.af326534df682cb081bc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.c00f35910f4c19241bd5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.c3608a2184213799cd3e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.c864c802b3765bf9772c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.dad5f77e54bd73786a53.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.e18762ffd764c78cfa11.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.e5a289351dedf7afaf46.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.e8b593a4c6ab55cfed89.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.e9af2016ce84759e96b8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.f2cfb04006db7bee23a8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.f2de99239e76bf4e31e3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.f3992aa6ddb7a577010d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.fa4ba51dc2eb693d1213.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.fb809badf506fe8c1cbd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/11.feec478cb8f960b9c4a7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0135afb5f1a6f5a5c4d7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0219c27c4c6f54c1562c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.04dd0d0d729ef608c9d9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.054f45b8288cad12b4f0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.05cf76e95a41506f3e82.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0791fa53c1c0a952da26.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.084e87dce693d52403ef.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.087b81a0b100b777968c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.095ff5171016e6f393db.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.096513e5537ee29618c4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0b831b577f6df52aeff7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0c8314a9cc93ebbd316c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0e646bf578b330f4c673.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0ec911ef78e39ccca42c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.0fd6facad40dbf8e5c78.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.104b304467f8c7ef5b09.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.10bc1d42df9026418451.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.11696f219d72925f6bd1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.11f901113342b2f225bc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1394dc131ff3cb3785ac.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.13f5545e41bb8f8ee559.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.14cf97aab1b3cbaf70b8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1519f570e93706eca8eb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.17005ebd26a434538b40.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1727dd9ac89c34130978.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1ac30e5bdb20bffb0275.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1c6aada705a6b578c447.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1cd232450a65ed437178.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1e421efa826457bfccbc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1f435e3c0090d72ff274.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.1f73a04af3c58bf23781.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.245805301ae70200221d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.24755cc33b031f198be8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.25f1c56444b64bc728dd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.26746ac607ce5f1a7d96.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2b34141bcb38fb0fd8a6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2c20b5ebd34934812141.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2d112042b248ad3368c7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2d5d7200e022e8fe4774.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2e01f00a32ea90437319.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.2e8389a702b274635d40.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.320a89ebd4eb242c2b20.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.341538a9ba42c9a9bcd6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.36b77b9750d4ec405918.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.3ad78177613f1eba5bc1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.3ceb4139f0b1a19d4f2b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.417331757047627f36ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.41ca9e0106f978a3df9d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.427f5695511e93b77a59.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.452a61be9a29f3631f7d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.467edf64a04659696419.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.491c4b8c960b5c7eb628.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.4f27f2e0c4c2314d7dff.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.52bdaf06f46e1b1cda52.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.53d7842060ff71ec94a5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.55191a0a7f1c4b4069a2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.553ca9cdf3d8c05147ee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.555ce2d73655e8cc8585.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.592bfc70f813b3d1f191.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.5d309bb4a26111aff567.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.5ecb071488f784624ab3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.60122840e4d259c5348c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.63a7e4f5a992762f3fd3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.6850aad577b1ae347a4e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.6a2de07d965b74ab2847.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.6b4a594e970bcb775411.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.6d3cb52ece58965119c2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.7011e32bcbed7e735943.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.707d353c0fb502321470.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.70d5d684c88282573f50.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.71c9616ab7f0fdc29955.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.71e34a59dbfdd65c82d9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.797409279d5b4aad4508.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.7af975e73c6e458480aa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.7ce2ecbf6193bfb55eed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.7fbb239587780370f91f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.803e7072c9056a3eed58.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.810855583043a0848dda.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.822048439f2ac6bd6ac0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.844c40c016de87022066.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8525d78dcbd09eb31e46.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8562303e0197c23793e2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8729b516099d3bc99875.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8aae624867c1e53509b2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8c254237e1917b9d62ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8e6816b5d2d06a9a2e2c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.8fda4c7fb9cbb0c8eaca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.918163197d44348d9c77.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.97617c908825d9bbe4e6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.978d5a46d1d3cdaf4d8d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.98df4850c2ccdeb27c43.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.99a1d63bbfd95353063c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.9b81cebf633d71b7c9ae.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.9c4264e54f4ba8b186ed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.9c44625f18b2eb55c7f5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.9db0a791bbf628fcf739.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.9fbc8b0a50f545ee1501.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.a497adb62d0ca681c48e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.aa9e9ca6a9fc2d4f74fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ac073ade963fc087a018.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.acbc5baf897a67e018e3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ae46a93f8cb1de1d3dfc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.af487a6ab039312fb493.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b0fcb2a4bc9eef77da6a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b2129396f3d5ddd8bc65.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b2bc4b3136111e8b2f45.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b2e5f2b4c3fec7064147.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b5ef6b847d43dd87cdf6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.b89c985f9b1c3337991b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ba211f98ce99d9680658.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ba7618a56ac61c7aac9d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.bcf43909208768fe08e9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.bf6653d319841c6fc42e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.bfa9c89fb6522c244316.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.bffbd359dd425565c0e3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.c4d5ad664c89fb133335.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.c554d38fda2e5583f55a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.c63ae70aeca6da63130c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.c9c4c32889fd0d358660.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ca160160663d03680197.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.cdc5b9dcf9e02f2a740c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.d11d127c2b87fc219eb0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.d4e552cdb6a6c6597897.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.d6799f262a535c947ea0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.d6ef5a9eaa3e92c7ec50.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.db5f5d21788f677b3c2c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.dbe2e9fc19935b36337e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.dc722d6c61f40f2a636d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ddddd456860943e1c35e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e13f5030b03a1e730d3b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e4a3eeb53939c6d58ae7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e4e6ac2861bebb251d62.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e775f547c4203080143e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e83cc5f67664d8ae827b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e88bfa38a112fe15413c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.e8ecf2642e0dd7b0cf27.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ed9e7985b0241ed47308.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.ef3d2ccdca9f029a28fd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.f4381533634c775a87fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.f59136e001087a464b2b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.f79f9e788507f86bbfc1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.f88bece6e3e721adafc9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.f9b8582d75035bbc68bb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.fa487ce479c7bdf8a14f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.fcfb3dac0810c8672e5d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.fd007c1b1e9beeb9c7bc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.fd9047373ce5a8d15a98.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/12.fe3b554b05df3e11fcc1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/10.12c548085546685ddd4a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/10.77d14f4330600173bd62.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/10.dd14233abee8387d00f5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.0578ad2dfa838bbf23ef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.07cc1724d8a13b4891e4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.2358a21f97d0e4ab0731.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.27bc11ef780746d2f6b5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.4161763b4c9a4b052ecd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.4ef4a1946ecbb162f839.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.53958bd31907ade7f53a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.7acba55fbc946fe2d320.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.92aed04040a5d508415c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.9a9f759a601a6c19d215.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.a25b1865a2ccc819511b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.a29fddceda74bda141ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.b0a38e4f761f9d89eb4a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.b2fc2435d85d01119ab2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.b35d74e9703536f7203a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.b7ce68c56df3ca743400.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.cf5a7468937e7fd649bd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/11.ff51cb8c9c078b17436c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/12.d0293aaa634405bac574.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/13.0d1c88343ab47a01da2e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/13.97f9a962a8e15103a943.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/13.d68194d9c96ec3ac1736.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/13.f4041dc89c24da44d157.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/14.98214e94df5af9abc045.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/14.dc7b8ea685c2b4a4b3e1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/14.e00bfaaffb403f3f0b67.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/14.f008466b51baa7456845.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.687e1a96eaafe81e52ed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.7aa6b46a64531d56d0b3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.a7fa24fa3434575fe277.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.de27fa04526a2d283fad.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.ea3fa9d0cfe527fdff1f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.f5654aaeb62c09d3364d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/15.fb3d6e397209bc068079.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.0b641921476da9e27d11.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.322e9c083befb7c1516f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.6215e5482208a2d1c227.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.6b7a320014c211f783fb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.8217535fe3cbfe1efb9b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/16.8d7c96ce4ec476edcace.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/15.9535b02b88023fbd4c6b.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/16.d64fe91238c5e08e6f73.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/17.52def81950e9c6c99e4c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/2.6abd08017917c032c10d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/2.db1aed1f193be6081a71.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.04282ca967f831f65672.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.2492b202df64f928e82d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.27e993c1b954d6f0870d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.a0d9f3cb076cdbf85d22.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.b745386a6b61308f34fd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.bda60ee2d7f256b9799e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.e61ae50fffc154954be6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.f09aa3a87c977ac8b072.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.f14a42aa1e10378b6c97.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.f2594b8bff0c6bd7a4a5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/4.5b1f6c8e454a7b6b78e1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.001b2f85e4f5cdbc98bc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.04e2db337225fa24a8ac.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.06b3aaeece3da7dad3fe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.08ce4664f89f04cfc22e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.118890279494dd8f9c96.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.14a22f227ff5af2afdc8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.20eb554075e442433e75.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.2450f1ecc8bdd387bf23.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.28fa5460f38dcc4e63da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.2f7fadbea9ba69b54cc1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.367899d79892ff1615a5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.3c230649685776970aaa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.4ec52f80133e1c41a6a2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.5cc2f0272f1b002740d7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.5e5d117e1e0be93f12d3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.7a374ffc873b34346df7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.7d90fe57c5f3fa87c5bc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.84026c08db187955cfc9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.86319b12cc8e90acc719.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.99237c1e180fc34efa1f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.ae507166b8818de3664e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.d4038e54aead590602c6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.d4ba6b7d4db392949336.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.d712b809348ebed05dbf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.e00b6c12c75ec306663a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.e70b921503efe1ffbbb9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.e867968809451dfc0078.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.ece5a2513999835b4d35.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.f60a1b8512bf46add12a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.fcb4e2403771087f8672.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.ff108eca4f23abc36012.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/6.8379e8376c9376142db9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/7.cf05f3351d3da3084105.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/8.e96f78d75a218b020c6c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/9.d0cad9c17811e9bcc01e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/17.102779fbd3580740b337.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/17.1cb7f68af4c76a61e521.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.0f33f6ca0fc27434bbd9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.149e33d0487fa1578b97.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.15325d1e636e29689c0a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.1da70addf400551580a3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.21538451430a9b558448.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.3344d1a31b41105b6f1a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.36ee3ecc9d11f42135d3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.3ac817b2d8ba15ced3e5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.662aff056d058e8033d7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.6b983bcb65cac31261c6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.8315cf2bca004958ac4f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.b0e0a629117ff5198349.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.ce3e883fae49c31b51ae.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.dca02020b784ff08c8c2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.e11f5371583427b29138.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.e513490a3a452d9da537.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.e58125f6d75e69e7f56e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.f3cfc36fa1a8a37b0efb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.fc954bdf593506a30543.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.fcda86e7652106ef9e20.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/18.ff8bc4b81c4aee16226a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/19.7b64c2f516def72efe6e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/2.c9103e3fd3a1f5de66d5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/20.013e6ffc372fb3a1c233.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/21.359696ab64908ee27226.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/22.21a75fb8a1275ca295f8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/3.41eb2d28470b637fda4c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/4.d55b282f906699e89ce9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/5.b8f6e3e2a9fd5b03ebd2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/6.d34069894fcdcc930cd3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/7.97e4b680859a6fd9f0b4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/8.b420b541a43d7a89888d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/9.0d733ce0f0081dec6d09.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/App/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/App/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Home/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Home/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Partials/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Partials/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Organizations/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Organization/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Organizations/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Organization/Edit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Organizations/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Organization/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Partials/Icon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Partials/Icon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -317,10 +103,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+            <state relative-caret-position="199">
+              <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -349,15 +135,32 @@
       <find>app</find>
       <find>users</find>
       <find>1/2</find>
-      <find>title</find>
       <find>inet</find>
       <find>:href</find>
       <find>blue</find>
+      <find>ends</find>
+      <find>:href=&quot;route('organizations.edit', organization.id)&quot;</find>
+      <find>btn-indigo</find>
       <find>indigo</find>
+      <find>invoice_clients</find>
+      <find>invoice_products</find>
+      <find>products</find>
+      <find>productos</find>
+      <find>title</find>
+      <find>Productos</find>
+      <find>product</find>
+      <find>subcribed_user_can_update_invoice_clients</find>
     </findStrings>
     <replaceStrings>
       <replace />
+      <replace>:href=&quot;route('invoice.products.edit', {'slug':organization.id, 'product':product.id})&quot;</replace>
+      <replace>btn-green</replace>
       <replace>green</replace>
+      <replace>invoice_clients</replace>
+      <replace>clients</replace>
+      <replace>producto</replace>
+      <replace>Clientes</replace>
+      <replace>client</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/Policies</dir>
@@ -369,37 +172,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/Feature/Organization/AddOrRemoveContributorToOrganizationTest.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/Organization/InviteContributorToOrganizationTest.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/Organization/ViewListOrganizationTest.php" />
-        <option value="$PROJECT_DIR$/app/Observers/OrganizationObserver.php" />
-        <option value="$PROJECT_DIR$/app/Plan.php" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Auth/Login.vue" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Auth/Passwords/Email.vue" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Auth/Passwords/Reset.vue" />
-        <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Marketing/Index.vue" />
-        <option value="$PROJECT_DIR$/config/cors.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/Cors.php" />
-        <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Application/Index.vue" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/App/Other.vue" />
-        <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/js/Partials/Pagination.vue" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_03_002202_create_plans_table.php" />
-        <option value="$PROJECT_DIR$/app/Console/Commands/SyncPlans.php" />
-        <option value="$PROJECT_DIR$/app/Restriction.php" />
-        <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
         <option value="$PROJECT_DIR$/tests/Feature/Organization/CreateOrganizationTest.php" />
         <option value="$PROJECT_DIR$/app/Policies/OrganizationPolicy.php" />
         <option value="$PROJECT_DIR$/tests/Feature/Organization/UpdateOrganizationTest.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/tests/Feature/Organization/PlanLimitOrganizationTest.php" />
-        <option value="$PROJECT_DIR$/app/Organization.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" />
-        <option value="$PROJECT_DIR$/resources/js/Pages/Organizations/Edit.vue" />
         <option value="$PROJECT_DIR$/app/Console/Commands/PlanRestrictionCommand.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_17_223337_create_restrictions_table.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
@@ -413,13 +190,39 @@
         <option value="$PROJECT_DIR$/resources/js/Pages/Home/Index.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AppController.php" />
         <option value="$PROJECT_DIR$/resources/js/Pages/App/Index.vue" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/js/Partials/MainMenu.vue" />
         <option value="$PROJECT_DIR$/resources/js/Partials/Layout.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Invoice/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Home/Index.vue" />
         <option value="$PROJECT_DIR$/resources/js/Partials/Invoice/Layout.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_19_151243_create_invoice_products.php" />
+        <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/ApplicationAuthorizedMiddleware.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/Invoice/CreateProductTest.php" />
+        <option value="$PROJECT_DIR$/resources/css/buttons.css" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Create.vue" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Index.vue" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Edit.vue" />
+        <option value="$PROJECT_DIR$/tests/Feature/Invoice/UpdateProductTest.php" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Organizations/Edit.vue" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Organization/Edit.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_19_151243_create_invoice_products_table.php" />
+        <option value="$PROJECT_DIR$/app/Organization.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_20_223712_create_invoice_clients_table.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/Invoice/CreateClientTest.php" />
+        <option value="$PROJECT_DIR$/resources/js/Partials/Icon.vue" />
         <option value="$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue" />
+        <option value="$PROJECT_DIR$/app/Model/Invoice/Product.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Invoice/ProductController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Model/Invoice/Client.php" />
+        <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Edit.vue" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Create.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Invoice/ClientController.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/Invoice/UpdateClientTest.php" />
+        <option value="$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Index.vue" />
       </list>
     </option>
   </component>
@@ -533,7 +336,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -549,58 +351,32 @@
             <path>
               <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="Pages" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="Feature" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="Pages" type="462c0819:PsiDirectoryNode" />
-              <item name="Invoice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="Pages" type="462c0819:PsiDirectoryNode" />
-              <item name="Invoice" type="462c0819:PsiDirectoryNode" />
-              <item name="Home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="Partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="Partials" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="Feature" type="462c0819:PsiDirectoryNode" />
               <item name="Invoice" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/Partials/Invoice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/Pages/Invoice/Client" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -608,13 +384,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/Pages/Invoice/Client" />
+      <recent name="$PROJECT_DIR$/resources/js/Pages/Invoice/Product" />
       <recent name="$PROJECT_DIR$/resources/js/Partials/Invoice" />
       <recent name="$PROJECT_DIR$/resources/js/Pages/Auth/passwords" />
       <recent name="$PROJECT_DIR$/resources/js/Pages/Auth" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/resources/js/Shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Model/Invoice" />
       <recent name="$PROJECT_DIR$/tests/Feature/Organization" />
     </key>
   </component>
@@ -678,11 +455,15 @@
       <workItem from="1558128978605" duration="10637000" />
       <workItem from="1558139932858" duration="70000" />
       <workItem from="1558192422269" duration="22961000" />
+      <workItem from="1558276461900" duration="7436000" />
+      <workItem from="1558368017826" duration="5620000" />
+      <workItem from="1558386254576" duration="2621000" />
+      <workItem from="1558389028381" duration="8246000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207259000" />
+    <option name="totallyTimeSpent" value="231182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -714,345 +495,9 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Pagination.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="155" selection-start-line="3" selection-start-column="151" selection-end-line="3" selection-end-column="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Plan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_19_001457_create_contributors_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="81" column="26" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="26" />
-          <folding>
-            <element signature="e#7#34#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_03_002202_create_plans_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Restriction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/Organization/CreateOrganizationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Policies/OrganizationPolicy.php" />
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="67" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/Organization/UpdateOrganizationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="77" column="101" lean-forward="true" selection-start-line="77" selection-start-column="101" selection-end-line="77" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/Organization/InviteContributorToOrganizationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="25" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/Organization/PlanLimitOrganizationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="56" column="70" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="70" />
-          <folding>
-            <element signature="e#46#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Organization.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-          <folding>
-            <element signature="e#23#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organizations/Edit.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3174">
-          <caret line="144" column="32" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="118" column="119" lean-forward="true" selection-start-line="118" selection-start-column="73" selection-end-line="118" selection-end-column="119" />
-          <folding>
-            <element signature="e#40#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SyncPlans.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="41" column="22" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="22" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/PlanRestrictionCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#40#71#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_17_223337_create_restrictions_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding>
-            <element signature="e#23#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubscriptionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-          <folding>
-            <element signature="e#40#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Subscription/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1081">
-          <caret line="10" column="143" selection-start-line="10" selection-start-column="143" selection-end-line="10" selection-end-column="143" />
-          <folding>
-            <element signature="n#div#2;n#div#1;n#layout#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Marketing/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organizations/Create.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="8" column="58" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="58" />
-          <folding>
-            <element signature="e#2155#2193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organizations/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="42" column="69" lean-forward="true" selection-start-line="42" selection-start-column="69" selection-end-line="42" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/buttons.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AppController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="e#40#60#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/app.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tailwind.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="500" column="8" selection-start-line="500" selection-start-column="8" selection-end-line="500" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/App/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="33" selection-end-column="11" />
-          <folding>
-            <element signature="e#40#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Home/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="65" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="95" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/Partials/MainMenu.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
         </state>
       </provider>
@@ -1067,6 +512,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_19_151210_invoicecreate_invoice_products.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_17_223337_create_restrictions_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="64" column="9" lean-forward="true" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="32" />
+          <folding>
+            <element signature="e#23#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/ApplicationAuthorizedMiddleware.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#39#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Organization/CreateOrganizationTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-796">
+          <caret line="82" column="66" selection-start-line="82" selection-start-column="62" selection-end-line="82" selection-end-column="66" />
+          <folding>
+            <element signature="e#46#64#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/App/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Invoice/Layout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Invoice/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1077,34 +588,294 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Home/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Home/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="50" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/buttons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Partials/TextInput.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="117" selection-start-line="3" selection-start-column="105" selection-end-line="3" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Partials/TextareaInput.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding>
+            <element signature="e#1270#1316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Edit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organization/Create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-874">
+          <caret line="8" column="58" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="58" />
+          <folding>
+            <element signature="e#2155#2193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/mix-manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-03-23.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-03-04.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-04-19.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-05-10.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organization/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="66" column="11" lean-forward="true" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
+          <folding>
+            <element signature="e#26255#26277#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Organization/Edit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_20_223619_create_clients_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_19_151243_create_invoice_products_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_20_223712_create_invoice_clients_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Icon.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="151" selection-start-line="11" selection-start-column="151" selection-end-line="11" selection-end-column="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Organization.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="79" selection-end-column="5" />
+          <folding>
+            <element signature="e#23#50#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Invoice/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="e#37#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Product/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="42" column="132" selection-start-line="42" selection-start-column="132" selection-end-line="42" selection-end-column="132" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="55" column="70" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="70" />
+        <state relative-caret-position="607">
+          <caret line="74" column="100" selection-start-line="74" selection-start-column="100" selection-end-line="74" selection-end-column="100" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Invoice/Layout.vue">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Invoice/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        <state relative-caret-position="506">
+          <caret line="45" column="56" selection-start-line="45" selection-start-column="56" selection-end-line="45" selection-end-column="56" />
+          <folding>
+            <element signature="e#48#68#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Partials/Invoice/MainMenu.vue">
+    <entry file="file://$PROJECT_DIR$/app/Model/Invoice/Client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        <state relative-caret-position="860">
+          <caret line="43" column="58" lean-forward="true" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Invoice/UpdateProductTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="148" selection-end-column="5" />
+          <folding>
+            <element signature="e#41#71#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+          <folding>
+            <element signature="e#7#34#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="60" column="8" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="76" selection-end-column="11" />
+          <folding>
+            <element signature="e#40#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-566">
+          <caret line="13" column="74" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Edit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Invoice/CreateClientTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="35" column="44" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="35" selection-end-column="44" />
+          <folding>
+            <element signature="e#41#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Invoice/CreateProductTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#41#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Invoice/ClientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="112" column="57" selection-start-line="112" selection-start-column="57" selection-end-line="112" selection-end-column="57" />
+          <folding>
+            <element signature="e#48#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Invoice/UpdateClientTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+          <folding>
+            <element signature="e#41#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Pages/Invoice/Client/Index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
         </state>
       </provider>
     </entry>

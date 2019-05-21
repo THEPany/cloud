@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Laravel\Cashier\Subscription;
-use App\{User, Organization, Plan, Restriction};
+use App\{Model\Invoice\Client, Model\Invoice\Product, User, Organization, Plan, Restriction};
 
 /*
 |--------------------------------------------------------------------------
@@ -80,5 +80,22 @@ $factory->define(Restriction::class, function (Faker $faker) {
         'plan_id' => factory(Plan::class),
         'restriction_key' => Str::random(5),
         'restriction_limit' => $faker->numberBetween(10, 1000),
+    ];
+});
+
+$factory->define(Product::class, function (Faker $faker) {
+    return [
+        'organization_id' => factory(Organization::class),
+        'name' => $faker->name,
+        'cost' => $faker->numberBetween(100, 1000),
+    ];
+});
+
+$factory->define(Client::class, function (Faker $faker) {
+    return [
+        'organization_id' => factory(Organization::class),
+        'name' => $faker->name,
+        'last_name' => $faker->lastName,
+        'id_card' => $faker->randomDigit,
     ];
 });
