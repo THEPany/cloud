@@ -8,6 +8,7 @@ use App\Model\Invoice\Client;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClientController extends Controller
 {
@@ -47,7 +48,7 @@ class ClientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param $slug
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store($slug)
     {
@@ -63,7 +64,7 @@ class ClientController extends Controller
             ])
         );
 
-        return redirect()->route('invoice.clients.index', $slug)->with(['flash_success' => 'Cliente creado correctamente.']);
+        return Redirect::route('invoice.clients.index', $slug)->with(['flash_success' => 'Cliente creado correctamente.']);
     }
 
     /**
@@ -94,7 +95,7 @@ class ClientController extends Controller
      *
      * @param $slug
      * @param \App\Model\Invoice\Client $client
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($slug, Client $client)
     {
@@ -107,20 +108,40 @@ class ClientController extends Controller
                 'phone' => ['nullable', 'string', 'min:10', 'max:13', Rule::unique('invoice_clients')->ignore($client->id)],
             ])
         );
-        return redirect()->route('invoice.clients.edit', [
+        return Redirect::route('invoice.clients.edit', [
             'slug' => $slug,
             'client' => $client
         ])->with(['flash_success' => 'Cliente actualizado correctamente.']);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @param \App\Model\Invoice\Client $client
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy($slug, Client $client)
     {
-        //
+        $client->delete();
+
+        return Redirect::route('invoice.clients.edit', [
+            'slug' => $slug,
+            'client' => $client
+        ]);
+    }
+
+    /**
+     * @param $slug
+     * @param \App\Model\Invoice\Client $client
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore($slug, Client $client)
+    {
+        $client->restore();
+
+        return Redirect::route('invoice.clients.edit', [
+            'slug' => $slug,
+            'client' => $client
+        ]);
     }
 }

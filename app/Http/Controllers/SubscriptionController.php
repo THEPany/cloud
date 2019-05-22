@@ -17,6 +17,8 @@ class SubscriptionController extends Controller
             'token' => Braintree_ClientToken::generate(),
             'isSubscribed' => auth()->user()->isSubscribed(),
             'isCancel' => optional(optional(auth()->user()->subscription('main'))->ends_at)->format('d/m/Y') ?: '',
+            'isTrial' => auth()->user()->subscription('main')->onTrial() ? auth()->user()->subscription('main')->trial_ends_at->format('d/m/Y') : '',
+            'endSubscription' => auth()->user()->subscription('main')->ends_at ? auth()->user()->subscription('main')->ends_at->isToday() : '',
             'plans' => Plan::orderBy('price')->get()->map->only('id', 'name', 'braintree_plan', 'price', 'trialDuration', 'description'),
             'plan' => Plan::where('braintree_plan', optional(auth()->user()->subscriptions->last())->only('braintree_plan')['braintree_plan'])->first(),
             'card' => ['card_brand' => auth()->user()->card_brand, 'card_last_four' => auth()->user()->card_last_four],
@@ -26,10 +28,17 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $plan = Plan::findOrFail($request->plan);
-        $request->user()
-            ->newSubscription('main', $plan->braintree_plan)
-            ->trialDays($plan->trialDuration)
-            ->create($request->payment_method_nonce);
+
+        if ($request->user()->isSubscribed()) {
+            $request->user()
+                ->newSubscription('main', $plan->braintree_plan)
+                ->create($request->payment_method_nonce);
+        } else {
+            $request->user()
+                ->newSubscription('main', $plan->braintree_plan)
+                ->trialDays($plan->trialDuration)
+                ->create($request->payment_method_nonce);
+        }
 
         return redirect()->route('subscriptions.index')->with(['flash_success' => 'Se ha suscrito correctamente al plan seleccionado.']);
     }

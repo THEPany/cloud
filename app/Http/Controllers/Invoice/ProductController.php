@@ -7,10 +7,14 @@ use App\Organization;
 use App\Model\Invoice\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
-
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index($slug)
     {
         return Inertia::render('Invoice/Product/Index', [
@@ -24,6 +28,10 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create($slug)
     {
         return Inertia::render('Invoice/Product/Create', [
@@ -31,6 +39,10 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @param $slug
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store($slug)
     {
         $organization = Organization::whereSlug($slug)->firstOrFail();
@@ -43,10 +55,15 @@ class ProductController extends Controller
             ])
         );
 
-        return redirect()->route('invoice.products.index', $slug)
+        return Redirect::route('invoice.products.index', $slug)
             ->with(['flash_success' => 'Producto creado correctamente.']);
     }
 
+    /**
+     * @param $slug
+     * @param \App\Model\Invoice\Product $product
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($slug, Product $product)
     {
         return Inertia::render('Invoice/Product/Edit', [
@@ -61,6 +78,11 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @param $slug
+     * @param \App\Model\Invoice\Product $product
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update($slug, Product $product)
     {
         $product->update(
@@ -70,9 +92,39 @@ class ProductController extends Controller
                 'cost' => ['required', 'numeric', 'min:100', 'max:999999']
             ])
         );
-        return redirect()->route('invoice.products.edit', [
+
+        return Redirect::route('invoice.products.edit', [
             'slug' => $slug,
             'product' => $product
         ])->with(['flash_success' => 'Producto actualizado correctamente.']);
+    }
+
+    /**
+     * @param $slug
+     * @param \App\Model\Invoice\Product $product
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy($slug, Product $product)
+    {
+        $product->delete();
+        return Redirect::route('invoice.products.edit', [
+            'slug' => $slug,
+            'product' => $product
+        ]);
+    }
+
+    /**
+     * @param $slug
+     * @param \App\Model\Invoice\Product $product
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore($slug, Product $product)
+    {
+        $product->restore();
+        return Redirect::route('invoice.products.edit', [
+            'slug' => $slug,
+            'product' => $product
+        ]);
     }
 }

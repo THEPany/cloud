@@ -3,13 +3,17 @@
         <h1 class="mb-8 font-bold text-3xl">Suscripción</h1>
 
         <div v-if="isCancel" class="bg-white rounded shadow overflow-hidden max-w-lg mb-12">
-            <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-                <p class="pb-2">Los beneficios de su suscripción <span class="capitalize font-bold">{{ plan.braintree_plan }}</span>, continuarán hasta que finalice su período de facturación actual <span class="font-bold">{{ isCancel}}</span>.</p>
+            <div class="p-8 -mr-6 -mb-8 flex flex-wrap" v-if="isTrial">
+                <p class="pb-2">Los beneficios de su suscripción <span class="capitalize font-bold">{{ plan.braintree_plan }}</span>, continuarán hasta que finalice su período de prueba actual <span class="font-bold">{{ isTrial }}</span>.</p>
+            </div>
+            <div class="p-8 -mr-6 -mb-8 flex flex-wrap" v-else>
+                <p class="pb-2">Los beneficios de su suscripción <span class="capitalize font-bold">{{ plan.braintree_plan }}</span>, continuarán hasta que finalice su período de facturación actual <span class="font-bold">{{ isCancel }}</span>.</p>
                 <p class="pb-2">Puede reanudar su suscripción sin costo adicional hasta el final del período de facturación.</p>
             </div>
             <div class="px-8 py-4 bg-grey-lightest border-t border-grey-lighter flex items-center">
-                <button @click="cancelNowSubscription"  class="text-red hover:underline" tabindex="-1" type="button">Eliminar suscripción ahora</button>
-                <button @click="resumeSubscription" :loading="sending" class="btn-indigo ml-auto" type="submit">Reanudar</button>
+                <button :disabled="isTrial || endSubscription" :class="{'opacity-50 cursor-not-allowed hover:bg-indigo-dark':isTrial || endSubscription}" @click="cancelNowSubscription"  class="text-red hover:underline" tabindex="-1" type="button">Eliminar suscripción ahora</button>
+                <button v-if="!endSubscription" :disabled="isTrial" :class="{'opacity-50 cursor-not-allowed hover:bg-indigo-dark':isTrial}" @click="resumeSubscription" :loading="sending" class="btn-indigo ml-auto" type="submit">Reanudar</button>
+                <button v-else @click="newSubscription" :loading="sending" class="btn-indigo ml-auto" type="submit">Nueva suscripción</button>
             </div>
         </div>
         <div v-else>
@@ -82,7 +86,9 @@
         props: {
             token: String,
             isSubscribed: Boolean,
+            endSubscription: Boolean,
             isCancel: String,
+            isTrial: String,
             plans: Array,
             plan: Object,
             card: Object,
@@ -106,30 +112,28 @@
             }
         },
         created() {
-            dropin.create({
-                authorization: this.token,
-                container: "#dropin-container",
-                // paypal: { flow: 'vault' }
-            },(dropinErr, dropin) => { this.braintree.dropinErr = dropinErr; this.braintree.dropin = dropin; });
+            if (!this.isCancel) {
+                this.createDropin();
+            }
         },
         methods: {
             create() {
                 this.sending = true;
                 this.braintree.dropin.requestPaymentMethod((requestPaymentMethodErr, payload) => {
                     if(requestPaymentMethodErr) {
-                        console.log(requestPaymentMethodErr);
+                        /*console.log(requestPaymentMethodErr);*/
                         this.sending = false;
                     }
                     this.form.payment_method_nonce = payload.nonce;
                     this.$inertia.post(this.route('subscriptions.store'), this.form)
-                        .then(() => this.sending = false)
+                        .then(() => { this.sending = false; this.createDropin(); })
                 });
             },
             updateCard() {
                 this.sending = true;
                 this.braintree.dropin.requestPaymentMethod((requestPaymentMethodErr, payload) => {
                     if(requestPaymentMethodErr) {
-                        console.log(requestPaymentMethodErr);
+                       /* console.log(requestPaymentMethodErr);*/
                         this.sending = false
                     }
                     this.form.payment_method_nonce = payload.nonce;
@@ -154,6 +158,18 @@
             },
             resumeSubscription() {
                 this.$inertia.post(this.route('subscriptions.resumeSubscription'), {});
+            },
+            newSubscription() {
+                this.isCancel = false;
+                this.isSubscribed = false;
+                this.createDropin();
+            },
+            createDropin() {
+                dropin.create({
+                    authorization: this.token,
+                    container: "#dropin-container",
+                    // paypal: { flow: 'vault' }
+                },(dropinErr, dropin) => { this.braintree.dropinErr = dropinErr; this.braintree.dropin = dropin; });
             }
         }
     }

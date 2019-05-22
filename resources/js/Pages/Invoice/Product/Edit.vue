@@ -6,7 +6,7 @@
             {{ form.name }}
         </h1>
         <trashed-message v-if="product.deleted_at" class="mb-6" @restore="restore">
-            Este producto ha sido eliminada.
+            Este producto ha sido eliminado.
         </trashed-message>
         <div class="bg-white rounded shadow overflow-hidden max-w-lg">
             <form @submit.prevent="submit">

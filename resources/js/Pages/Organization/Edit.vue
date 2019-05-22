@@ -6,7 +6,7 @@
             {{ form.name }}
         </h1>
         <trashed-message v-if="organization.deleted_at" class="mb-6" @restore="restore">
-            This organization has been deleted.
+            Esta organización ha sido eliminada.
         </trashed-message>
         <div class="bg-white rounded shadow overflow-hidden max-w-lg">
             <form @submit.prevent="submit">
@@ -38,7 +38,7 @@
             <div class="w-3/4 p-0 m-0">
                 <multiselect v-model="value" :options="users" :custom-label="customLabel"
                              :searchable="true" placeholder="Buscar colaborador" open-direction="bottom"
-                             :limit="5" @input="selectColaborator" ></multiselect>
+                             :limit="5" @input="addContributor" ></multiselect>
             </div>
         </div>
 
@@ -46,24 +46,23 @@
             <table class="w-full whitespace-no-wrap">
                 <tr class="text-left font-bold">
                     <th class="px-6 pt-6 pb-4">Nombre</th>
-                    <th class="px-6 pt-6 pb-4">Correo electrónico</th>
-                    <th class="px-6 pt-6 pb-4" colspan="2">Acciones</th>
+                    <th class="px-6 pt-6 pb-4" colspan="2">Correo electrónico</th>
                 </tr>
                 <tr v-for="user in organization.users" :key="user.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <div class="px-6 py-4 flex items-center focus:text-indigo">
+                        <div class="px-6 py-4 flex items-center focus:text-indigo" @click="removeContributor(user.id)">
                             {{ user.name }}
                             <icon v-if="user.id === organization.user_id" name="star" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
                         </div>
                     </td>
                     <td class="border-t">
-                        <div class="px-6 py-4 flex items-center" tabindex="-1">
+                        <div class="px-6 py-4 flex items-center" @click="removeContributor(user.id)" tabindex="-1">
                             {{ user.email }}
                         </div>
                     </td>
                     <td class="border-t">
-                        <div class="px-6 py-4 flex items-center" tabindex="-1">
-                            <icon name="trash" class="flex-no-shrink w-4 h-4 fill-red ml-2" />
+                        <div class="px-6 py-4 flex items-center" @click="removeContributor(user.id)" tabindex="-1">
+                            <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
                         </div>
                     </td>
                 </tr>
@@ -82,7 +81,6 @@
     import SelectInput from '@/Partials/SelectInput'
     import TextInput from '@/Partials/TextInput'
     import TrashedMessage from '@/Partials/TrashedMessage'
-    import Multiselect from 'vue-multiselect'
 
     export default {
         components: {
@@ -92,7 +90,6 @@
             SelectInput,
             TextInput,
             TrashedMessage,
-            Multiselect,
         },
         props: {
             organization: Object,
@@ -138,11 +135,16 @@
             customLabel ({ name, email }) {
                 return `${name} – ${email}`
             },
-            selectColaborator() {
+            addContributor() {
                 if (confirm('¿Desea enviar una invitación a este usuario para que sea parte de su organización?')) {
                     this.$inertia.post(this.route('organizations.send.invitation', {'organization': this.organization.id, 'user': this.value.id}), this.value);
                 }
                 this.value = '';
+            },
+            removeContributor(user_id) {
+                if (confirm('¿Desea remover a este usuario de su organización?')) {
+                    this.$inertia.delete(this.route('organizations.remove.contributor', {'organization': this.organization.id, 'user': user_id}));
+                }
             }
         },
     }

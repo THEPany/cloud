@@ -40,8 +40,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('organizations', 'OrganizationController@store')->name('organizations.store');
     Route::get('organizations/{organization}/edit', 'OrganizationController@edit')->name('organizations.edit');
     Route::put('organizations/{organization}', 'OrganizationController@update')->name('organizations.update');
+    Route::delete('organizations/{organization}', 'OrganizationController@destroy')->name('organizations.destroy');
+    Route::put('organizations/{organization}/restore', 'OrganizationController@restore')->name('organizations.restore');
     Route::post('organizations/{organization}/{user}', 'OrganizationController@sendInvitationLink')->name('organizations.send.invitation');
     Route::get('organizations/{organization}/{user}', 'OrganizationController@invitation')->name('organizations.invitation')->middleware('signed');
+    Route::delete('organizations/{organization}/{user}', 'OrganizationController@removeContributor')->name('organizations.remove.contributor');
 
     // Subscription
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
@@ -66,6 +69,8 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::post('products', 'Invoice\ProductController@store')->name('invoice.products.store');
     Route::get('products/{product}/edit', 'Invoice\ProductController@edit')->name('invoice.products.edit');
     Route::put('products/{product}', 'Invoice\ProductController@update')->name('invoice.products.update');
+    Route::delete('products/{product}', 'Invoice\ProductController@destroy')->name('invoice.products.destroy');
+    Route::put('products/{product}/restore', 'Invoice\ProductController@restore')->name('invoice.products.restore');
 
     // Client
     Route::get('clients', 'Invoice\ClientController@index')->name('invoice.clients.index');
@@ -73,4 +78,11 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::get('clients/create', 'Invoice\ClientController@create')->name('invoice.clients.create');
     Route::put('clients/{client}', 'Invoice\ClientController@update')->name('invoice.clients.update');
     Route::get('clients/{client}/edit', 'Invoice\ClientController@edit')->name('invoice.clients.edit');
+    Route::delete('clients/{client}', 'Invoice\ClientController@destroy')->name('invoice.clients.destroy');
+    Route::put('clients/{client}/restore', 'Invoice\ClientController@restore')->name('invoice.clients.restore');
+
+    // Bill
+    Route::get('bills', 'Invoice\BillController@index')->name('invoice.bills.index');
+    Route::post('bills', 'Invoice\BillController@store')->name('invoice.bills.store');
+    Route::get('bills/create', 'Invoice\BillController@create')->name('invoice.bills.create');
 });

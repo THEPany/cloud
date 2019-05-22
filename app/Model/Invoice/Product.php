@@ -2,8 +2,8 @@
 
 namespace App\Model\Invoice;
 
+use App\Model;
 use App\Organization;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -26,6 +26,11 @@ class Product extends Model
     public function organization()
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    public function bills()
+    {
+        return $this->belongsToMany(Bill::class, 'invoice_bill_product');
     }
 
     public function scopeFilter($query, array $filters)

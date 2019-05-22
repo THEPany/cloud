@@ -16,7 +16,7 @@
                         </dropdown>
                     </div>
                     <div class="bg-white border-b w-full p-4 md:py-0 md:px-12 text-sm md:text-base flex justify-between items-center">
-                        <div class="mt-1 mr-4">{{ $page.auth.user.name }}</div>
+                        <div class="mt-1 mr-4">{{ $page.auth.user.email }}</div>
                         <dropdown class="mt-1" placement="bottom-end">
                             <div class="flex items-center cursor-pointer select-none group">
                                 <div class="text-grey-darkest group-hover:text-indigo-dark focus:text-indigo-dark mr-1 whitespace-no-wrap">
