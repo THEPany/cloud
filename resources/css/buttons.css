@@ -9,3 +9,7 @@
 
   &:hover, &:focus { @apply bg-orange }
 }
+
+.disabled {
+  @apply .opacity-50 .cursor-not-allowed;
+}

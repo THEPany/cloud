@@ -1,7 +1,7 @@
 <template>
     <div>
         <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
-        <select :id="id" ref="input" v-model="selected" v-bind="$attrs" class="form-select" :class="{ error: errors.length }">
+        <select :id="id" ref="input" v-model="selected" v-bind="$attrs" :class="[selectClass ? selectClass : 'form-select', { error: errors.length }]">
             <slot />
         </select>
         <div v-if="errors.length" class="form-error">{{ errors[0] }}</div>
@@ -20,6 +20,7 @@
             },
             value: [String, Number, Boolean],
             label: String,
+            selectClass: String,
             errors: {
                 type: Array,
                 default: () => [],

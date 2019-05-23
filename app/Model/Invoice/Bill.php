@@ -2,6 +2,7 @@
 
 namespace App\Model\Invoice;
 
+use Carbon\Carbon;
 use App\Organization;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,11 @@ class Bill extends Model
     const STATUS_CANCEL = 'CANCELADA';
     const STATUS_CURRENT = 'EN PROCESO';
     const STATUS_EXPIRED = 'EXPIRADA';
+
+    public function setExpiredAtAttribute($value)
+    {
+        $this->attributes['expired_at'] = Carbon::createFromFormat('d-m-Y', $value);
+    }
 
     public function organization()
     {

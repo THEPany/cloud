@@ -562,6 +562,11 @@ a:active {
   background-color: #f6993f;
 }
 
+.disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
 .form-label {
   margin-bottom: .5rem;
   display: block;

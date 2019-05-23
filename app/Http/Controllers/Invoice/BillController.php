@@ -35,6 +35,7 @@ class BillController extends Controller
         return Inertia::render('Invoice/Bill/Create', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'clients' => $organization->clients->map->only('id', 'name', 'last_name'),
+            'products' => $organization->products->map->only('id', 'name', 'description', 'cost'),
             'type_bill' => [Bill::TYPE_CASH, Bill::TYPE_CREDIT, Bill::TYPE_QUOTATION]
         ]);
     }

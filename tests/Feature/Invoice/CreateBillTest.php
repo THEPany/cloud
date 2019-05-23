@@ -44,11 +44,11 @@ class CreateBillTest extends TestCase
                 'paid_out' => 400,
                 'products' => [
                     [
-                        'product_id' => $products[0]->id,
+                        'id' => $products[0]->id,
                         'quantity' => 1
                     ],
                     [
-                        'product_id' => $products[1]->id,
+                        'id' => $products[1]->id,
                         'quantity' => 3
                     ]
                 ]
@@ -98,11 +98,11 @@ class CreateBillTest extends TestCase
                 'paid_out' => 400,
                 'products' => [
                     [
-                        'product_id' => $products[0]->id,
+                        'id' => $products[0]->id,
                         'quantity' => 1
                     ],
                     [
-                        'product_id' => $products[1]->id,
+                        'id' => $products[1]->id,
                         'quantity' => 3
                     ]
                 ]
@@ -152,7 +152,7 @@ class CreateBillTest extends TestCase
                 'expired_at' => now()->day(7),
                 'products' => [
                     [
-                        'product_id' => $product->id,
+                        'id' => $product->id,
                         'quantity' => 2
                     ],
                 ]

@@ -1,7 +1,7 @@
 <template>
     <div>
         <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
-        <textarea :id="id" ref="input" v-bind="$attrs" class="form-textarea" :class="{ error: errors.length }" :value="value" @input="$emit('input', $event.target.value)" />
+        <textarea :id="id" ref="input" v-bind="$attrs" :class="[areaClass ? areaClass : 'form-textarea', { error: errors.length }]" :value="value" @input="$emit('input', $event.target.value)" />
         <div v-if="errors.length" class="form-error">{{ errors[0] }}</div>
     </div>
 </template>
@@ -19,6 +19,7 @@
             },
             value: String,
             label: String,
+            areaClass: String,
             errors: {
                 type: Array,
                 default: () => [],

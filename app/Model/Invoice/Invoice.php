@@ -53,7 +53,7 @@ class Invoice
     private function findProducts()
     {
         $this->products = collect($this->request->products)->map(function ($item) {
-            $product = Product::findOrFail($item['product_id']);
+            $product = Product::findOrFail($item['id']);
             return [
                 'id' => $product->id,
                 'cost' => $product->cost,
@@ -65,18 +65,18 @@ class Invoice
 
     private function storeValues()
     {
-        return array_merge(
+        return array_filter(array_merge(
             $this->request->validate([
                 'client_id' => ['nullable', 'numeric'],
                 'bill_type' => ['required', 'in:'. Bill::TYPE_CASH.','.Bill::TYPE_CREDIT.','.Bill::TYPE_QUOTATION],
                 'discount' => ['nullable', 'numeric'],
-                'expired_at' => ['date', Rule::requiredIf($this->request->bill_type === Bill::TYPE_CREDIT)]
+                'expired_at' => ['nullable', 'date', Rule::requiredIf($this->request->bill_type === Bill::TYPE_CREDIT)]
             ]),
             [
                 'status' => $this->storeStatus(),
                 'total' => $this->products->sum('sub_total')
             ]
-        );
+        ));
     }
 
     private function storeStatus()
@@ -85,7 +85,7 @@ class Invoice
             throw ValidationException::withMessages([
                 'paid_out' => ['El pago supera el importe total de la factura.'],
             ]);
-        } elseif ($this->products->sum('sub_total') === $this->request->paid_out) {
+        } elseif ($this->products->sum('sub_total') == $this->request->paid_out) {
             if ($this->request->bill_type !== Bill::TYPE_CASH) {
                 throw ValidationException::withMessages([
                     'bill_type' => ['El tipo de factura elegido debe ser '. Bill::TYPE_CASH. ' cuando la factura se paga por completo.'],
@@ -93,7 +93,7 @@ class Invoice
             }
             return Bill::STATUS_PAID;
         } else {
-            if ($this->request->bill_type !== Bill::TYPE_CREDIT) {
+            if ($this->request->bill_type != Bill::TYPE_CREDIT) {
                 throw ValidationException::withMessages([
                     'bill_type' => ['El tipo de factura elegido debe ser '. Bill::TYPE_CREDIT. ' cuando la factura no se completa pagar.'],
                 ]);
