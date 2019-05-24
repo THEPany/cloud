@@ -55,7 +55,7 @@ class CreateBillTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Factura creada correctamente.']);
+        $response->assertSessionHas(['success' => 'Factura creada correctamente.']);
 
         $this->assertDatabaseHas('invoice_bills', [
             'organization_id' => $this->organization->id,
@@ -109,7 +109,7 @@ class CreateBillTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Factura creada correctamente.']);
+        $response->assertSessionHas(['success' => 'Factura creada correctamente.']);
 
         $this->assertDatabaseHas('invoice_bills', [
             'organization_id' => $this->organization->id,
@@ -145,11 +145,14 @@ class CreateBillTest extends TestCase
             'cost' => 500,
         ]);
 
+        $client = factory(Client::class)->create(['organization_id' => $this->organization->id]);
+
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
             ->post(route('invoice.bills.store', $this->organization->slug), [
+                'client_id' => $client->id,
                 'bill_type' => Bill::TYPE_CREDIT,
                 'paid_out' => 500,
-                'expired_at' => now()->day(7),
+                'expired_at' => now()->day(7)->format('d-m-Y'),
                 'products' => [
                     [
                         'id' => $product->id,
@@ -159,7 +162,7 @@ class CreateBillTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Factura creada correctamente.']);
+        $response->assertSessionHas(['success' => 'Factura creada correctamente.']);
 
         $this->assertDatabaseHas('invoice_bills', [
             'organization_id' => $this->organization->id,
@@ -174,6 +177,49 @@ class CreateBillTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('invoice_bill_product', [
+            'product_id' => $product->id,
+            'quantity' => 2,
+            'cost' => 500,
+            'sub_total' => 1000
+        ]);
+    }
+
+    /** @test */
+    function subcribed_user_cannot_create_invoice_bills_type_credit_without_client()
+    {
+        $product = factory(Product::class)->create([
+            'organization_id' => $this->organization->id,
+            'cost' => 500,
+        ]);
+
+        $response = $this->actingAs($this->subscription->user)
+            ->post(route('invoice.bills.store', $this->organization->slug), [
+                'bill_type' => Bill::TYPE_CREDIT,
+                'paid_out' => 500,
+                'expired_at' => now()->day(7)->format('d-m-Y'),
+                'products' => [
+                    [
+                        'id' => $product->id,
+                        'quantity' => 2
+                    ],
+                ]
+            ]);
+
+        $response->assertStatus(Response::HTTP_FOUND);
+
+        $this->assertDatabaseMissing('invoice_bills', [
+            'organization_id' => $this->organization->id,
+            'bill_type' => Bill::TYPE_CREDIT,
+            'status' => Bill::STATUS_CURRENT,
+            'total' => 1000,
+            'expired_at' => now()->day(7)->toDateTimeString()
+        ]);
+
+        $this->assertDatabaseMissing('invoice_payments', [
+            'paid_out' => 500
+        ]);
+
+        $this->assertDatabaseMissing('invoice_bill_product', [
             'product_id' => $product->id,
             'quantity' => 2,
             'cost' => 500,

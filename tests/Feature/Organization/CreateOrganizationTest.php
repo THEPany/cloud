@@ -67,7 +67,7 @@ class CreateOrganizationTest extends TestCase
 
         $response->assertStatus(Response::HTTP_FOUND);
 
-        $response->assertSessionHas(['flash_success' => 'Organización creada correctamente.']);
+        $response->assertSessionHas(['success' => 'Organización creada correctamente.']);
 
         $this->assertDatabaseHas('organizations', [
             'name' => 'organization_test',

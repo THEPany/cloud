@@ -6,7 +6,7 @@
                 <div class="px-10 py-12">
                     <h1 class="text-center font-bold text-3xl">Welcome Back!</h1>
                     <div class="mx-auto mt-6 w-24 border-b-2" />
-                    <text-input v-model="form.email" :errors="errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
+                    <text-input v-model="form.email" :errors="$page.errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
                     <text-input v-model="form.password" class="mt-6" label="Password" type="password" />
                     <label class="mt-6 select-none flex items-center" for="remember">
                         <input id="remember" v-model="form.remember" class="mr-1" type="checkbox">
@@ -14,7 +14,7 @@
                     </label>
                 </div>
                 <div class="px-10 py-4 bg-grey-lightest border-t border-grey-lighter flex justify-between items-center">
-                    <a class="hover:underline" tabindex="-1" :href="route('password.request')">Forget password?</a>
+                    <inertia-link class="hover:underline" tabindex="-1" :href="route('password.request')">Forget password?</inertia-link>
                     <loading-button :loading="sending" class="btn-indigo" type="submit">Login</loading-button>
                 </div>
             </form>
@@ -32,9 +32,6 @@
             LoadingButton,
             Logo,
             TextInput,
-        },
-        props: {
-            errors: Object,
         },
         data() {
             return {

@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     /**
      * @param $slug
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function index($slug)
     {
@@ -56,7 +56,7 @@ class ProductController extends Controller
         );
 
         return Redirect::route('invoice.products.index', $slug)
-            ->with(['flash_success' => 'Producto creado correctamente.']);
+            ->with('success', 'Producto creado correctamente.');
     }
 
     /**
@@ -96,7 +96,7 @@ class ProductController extends Controller
         return Redirect::route('invoice.products.edit', [
             'slug' => $slug,
             'product' => $product
-        ])->with(['flash_success' => 'Producto actualizado correctamente.']);
+        ])->with('success', 'Producto actualizado correctamente.');
     }
 
     /**

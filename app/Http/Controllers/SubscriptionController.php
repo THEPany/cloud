@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Organization;
-use App\Plan;
-use App\Restriction;
 use Inertia\Inertia;
 use Braintree_ClientToken;
 use Illuminate\Http\Request;
+use App\{Organization, Plan, Restriction};
 
 class SubscriptionController extends Controller
 {
@@ -40,7 +38,7 @@ class SubscriptionController extends Controller
                 ->create($request->payment_method_nonce);
         }
 
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Se ha suscrito correctamente al plan seleccionado.']);
+        return redirect()->route('subscriptions.index')->with('success', 'Se ha suscrito correctamente al plan seleccionado.');
     }
 
     public function update(Request $request)
@@ -57,7 +55,7 @@ class SubscriptionController extends Controller
             ->subscription('main')
             ->swap($plan->braintree_plan);
 
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Plan cambiado correctamente.']);
+        return redirect()->route('subscriptions.index')->with('success', 'Plan cambiado correctamente.');
     }
 
     public function updateCard(Request $request)
@@ -65,25 +63,28 @@ class SubscriptionController extends Controller
         $request->user()
             ->updateCard($request->payment_method_nonce);
 
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Método de pago cambiado correctamente.']);
+        return redirect()->route('subscriptions.index')->with('success', 'Método de pago cambiado correctamente.');
     }
 
     public function cancelSubscription(Request $request)
     {
         $request->user()->subscription('main')->cancel();
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Suscripcion cancelada correctamente.']);
+
+        return redirect()->route('subscriptions.index')->with('success', 'Suscripcion cancelada correctamente.');
     }
 
     public function resumeSubscription(Request $request)
     {
         $request->user()->subscription('main')->resume();
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Suscripcion reanudada correctamente.']);
+
+        return redirect()->route('subscriptions.index')->with('success', 'Suscripcion reanudada correctamente.');
     }
 
     public function cancelNowSubscription(Request $request)
     {
         $request->user()->subscription('main')->cancelNow();
-        return redirect()->route('subscriptions.index')->with(['flash_success' => 'Suscripcion eliminado correctamente.']);
+
+        return redirect()->route('subscriptions.index')->with('success', 'Suscripcion eliminado correctamente.');
     }
 
     /**

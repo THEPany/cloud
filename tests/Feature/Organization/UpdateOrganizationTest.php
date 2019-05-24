@@ -84,7 +84,7 @@ class UpdateOrganizationTest extends TestCase
 
         $response->assertStatus(Response::HTTP_FOUND);
 
-        $response->assertSessionHas(['flash_success' => 'Organización actualizada correctamente.']);
+        $response->assertSessionHas(['success' => 'Organización actualizada correctamente.']);
 
         $this->assertDatabaseHas('organizations', [
             'name' => 'organization test',

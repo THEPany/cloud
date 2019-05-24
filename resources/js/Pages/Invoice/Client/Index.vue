@@ -24,9 +24,14 @@
                 </tr>
                 <tr v-for="client in clients.data" :key="client.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" :href="route('invoice.clients.edit', {'slug':organization.slug, 'client':client.id})">
-                            {{ client.name }} {{ client.last_name}}
-                            <icon v-if="client.deleted_at" name="trash" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
+                        <inertia-link class="px-6 py-4 flex items-center focus:text-green" :href="route('invoice.clients.edit', {'slug':organization.slug, 'client':client.id})">
+                            <div class="flex flex-col">
+                               <div>
+                                   {{ client.name }} {{ client.last_name}}
+                                   <icon v-if="client.deleted_at" name="trash" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
+                               </div>
+                                <small class="pt-2 text-grey-dark">Debe: ${{ client.bills }}</small>
+                           </div>
                         </inertia-link>
                     </td>
                     <td class="border-t">
@@ -96,7 +101,7 @@
                     let query = _.pickBy(this.form)
                     this.$inertia.replace(this.route('invoice.clients.index',  {
                         ...{'slug': this.organization.slug},
-                        ...Object.keys(query).length ? query : { '': '' }
+                        ...Object.keys(query).length ? query : ''
                     }))
                 }, 150),
                 deep: true,

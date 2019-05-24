@@ -9,7 +9,7 @@
                     </div>
                     <h1 class="text-center font-bold text-3xl">Reset Password</h1>
                     <div class="mx-auto mt-6 w-24 border-b-2" />
-                    <text-input v-model="form.email" :errors="errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
+                    <text-input v-model="form.email" :errors="$page.errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
                 </div>
                 <div class="px-10 py-4 bg-grey-lightest border-t border-grey-lighter flex justify-between items-center">
                     <loading-button :loading="sending" class="btn-indigo" type="submit">Send Password Reset Link</loading-button>
@@ -29,9 +29,6 @@
             LoadingButton,
             Logo,
             TextInput,
-        },
-        props: {
-            errors: Object,
         },
         data() {
             return {

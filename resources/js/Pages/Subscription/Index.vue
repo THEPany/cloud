@@ -21,7 +21,7 @@
                 <form @submit.prevent="create">
                     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
                         <h2 class="text-grey-dark w-full pb-4">Suscribirse a la membresía</h2>
-                        <select-input v-model="form.plan" :errors="errors.plan" class="pr-6 pb-4 w-full" label="Plan">
+                        <select-input v-model="form.plan" :errors="$page.errors.plan" class="pr-6 pb-4 w-full" label="Plan">
                             <option :value="null" />
                             <option :value="plan.id" v-for="plan in plans">{{ plan.name + ' RD$ ' + plan.price }}</option>
                         </select-input>
@@ -40,7 +40,7 @@
 
                     <p class="pt-8 w-full text-black font-bold">{{ card.card_brand }}  **** **** *** {{ card.card_last_four }}</p>
 
-                    <select-input v-model="form.plan" :errors="errors.plan" class="pr-6 pb-8 pt-8 w-full" label="Actualizar Plan">
+                    <select-input v-model="form.plan" :errors="$page.errors.plan" class="pr-6 pb-8 pt-8 w-full" label="Actualizar Plan">
                         <option :value="plan.id" v-for="plan in plans">{{ plan.name + ' RD$ ' + plan.price }}</option>
                     </select-input>
                 </div>
@@ -91,11 +91,7 @@
             isTrial: String,
             plans: Array,
             plan: Object,
-            card: Object,
-            errors: {
-                type: Object,
-                default: () => ({}),
-            },
+            card: Object
         },
         remember: 'form',
         data() {

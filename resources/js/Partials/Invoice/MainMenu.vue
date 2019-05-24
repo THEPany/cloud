@@ -18,6 +18,12 @@
                 <div :class="isUrl($page.organization.slug + '/invoice/products') ? 'text-white' : 'text-green-lighter group-hover:text-white'">Productos</div>
             </inertia-link>
         </div>
+        <div class="mb-4">
+            <inertia-link class="flex items-center group py-3" :href="route('invoice.bills.index', $page.organization.slug)">
+                <icon name="invoice"  class="w-4 h-4 mr-2" :class="isUrl($page.organization.slug + '/invoice/bills') ? 'fill-white' : 'fill-green-light group-hover:fill-white'" />
+                <div :class="isUrl($page.organization.slug + '/invoice/bills') ? 'text-white' : 'text-green-lighter group-hover:text-white'">Facturas</div>
+            </inertia-link>
+        </div>
     </div>
 </template>
 

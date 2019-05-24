@@ -85,4 +85,11 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::get('bills', 'Invoice\BillController@index')->name('invoice.bills.index');
     Route::post('bills', 'Invoice\BillController@store')->name('invoice.bills.store');
     Route::get('bills/create', 'Invoice\BillController@create')->name('invoice.bills.create');
+    Route::get('bills/{bill}/edit', 'Invoice\BillController@edit')->name('invoice.bills.edit');
+});
+
+Route::get('pdf', function () {
+    $pdf = App::make('snappy.pdf.wrapper');
+    $pdf->loadHTML('<h1>Test</h1>');
+    return $pdf->inline();
 });

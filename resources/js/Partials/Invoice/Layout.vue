@@ -36,9 +36,7 @@
                         <main-menu />
                     </div>
                     <div class="w-full overflow-hidden px-4 py-8 md:p-12">
-                        <div v-show="$page.flash_success" class="bg-green-lightest border border-green text-green px-4 py-3 rounded relative mb-2" role="alert">
-                            <span class="block sm:inline">{{ $page.flash_success }}</span>
-                        </div>
+                        <flash-messages />
                         <slot />
                     </div>
                 </div>
@@ -49,6 +47,7 @@
 
 <script>
     import Dropdown from '@/Partials/Dropdown'
+    import FlashMessages from '@/Partials/FlashMessages'
     import Icon from '@/Partials/Icon'
     import Logo from '@/Partials/Logo'
     import MainMenu from '@/Partials/Invoice/MainMenu'
@@ -56,6 +55,7 @@
     export default {
         components: {
             Dropdown,
+            FlashMessages,
             Icon,
             Logo,
             MainMenu,

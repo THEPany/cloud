@@ -43,7 +43,7 @@ class UpdateProductTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Producto actualizado correctamente.']);
+        $response->assertSessionHas(['success' => 'Producto actualizado correctamente.']);
 
         $this->assertDatabaseHas('invoice_products', [
             'organization_id' => $this->organization->id,
@@ -68,7 +68,7 @@ class UpdateProductTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Producto actualizado correctamente.']);
+        $response->assertSessionHas(['success' => 'Producto actualizado correctamente.']);
 
         $this->assertDatabaseHas('invoice_products', [
             'organization_id' => $this->organization->id,

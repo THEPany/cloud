@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Organization;
 use Inertia\Inertia;
-use OpenPsa\Ranger\Ranger;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\UrlWindow;
@@ -35,24 +34,25 @@ class AppServiceProvider extends ServiceProvider
         Inertia::version(function () {
             return md5_file(public_path('mix-manifest.json'));
         });
-        Inertia::share('app.name', Config::get('app.name'));
-        Inertia::share('errors', function () {
-            return Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [];
-        });
-        Inertia::share('auth.user', function () {
-            if (Auth::user()) {
-                return [
-                    'id' => Auth::user()->id,
-                    'name' => Auth::user()->name,
-                    'email' => Auth::user()->email,
-                ];
-            }
-        });
-        Inertia::share('flash_success', function () {
-            return Session::get('flash_success') ? Session::get('flash_success') : (string) '';
+        Inertia::share(function () {
+            return [
+                'app' => [
+                    'name' => Config::get('app.name'),
+                ],
+                'auth' => [
+                    'user' => Auth::user() ? [
+                        'id' => Auth::user()->id,
+                        'name' => Auth::user()->name,
+                        'email' => Auth::user()->email,
+                    ] : null,
+                ],
+                'flash' => [
+                    'success' => Session::get('success'),
+                ],
+                'errors' => Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [],
+            ];
         });
         $this->registerLengthAwarePaginator();
-        $this->registerCarbonMarcos();
     }
 
     /**
@@ -77,14 +77,11 @@ class AppServiceProvider extends ServiceProvider
                         return $item->only($attributes);
                     });
                 }
-
                 public function transform($callback)
                 {
                     $this->items->transform($callback);
-
                     return $this;
                 }
-
                 public function toArray()
                 {
                     return [
@@ -92,13 +89,10 @@ class AppServiceProvider extends ServiceProvider
                         'links' => $this->links(),
                     ];
                 }
-
                 public function links($view = null, $data = [])
                 {
                     $this->appends(Request::all());
-
                     $window = UrlWindow::make($this);
-
                     $elements = array_filter([
                         $window['first'],
                         is_array($window['slider']) ? '...' : null,
@@ -106,7 +100,6 @@ class AppServiceProvider extends ServiceProvider
                         is_array($window['last']) ? '...' : null,
                         $window['last'],
                     ]);
-
                     return Collection::make($elements)->flatMap(function ($item) {
                         if (is_array($item)) {
                             return Collection::make($item)->map(function ($url, $page) {
@@ -136,16 +129,6 @@ class AppServiceProvider extends ServiceProvider
                     ]);
                 }
             };
-        });
-    }
-
-    protected function registerCarbonMarcos()
-    {
-        CarbonImmutable::macro('range', function ($to) {
-            return (new Ranger('en'))->format(
-                $this->toDateString(),
-                $to->toDateString()
-            );
         });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Invoice;
 
+use App\Model\Invoice\Bill;
 use Inertia\Inertia;
 use App\Organization;
 use App\Model\Invoice\Client;
@@ -16,7 +17,7 @@ class ClientController extends Controller
      * Display a listing of the resource.
      *
      * @param $slug
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function index($slug)
     {
@@ -24,10 +25,22 @@ class ClientController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'clients' => $organization->clients()
+                ->with(['bills' => function ($bill) {
+                    $bill->select('id', 'client_id', 'total', 'discount')->where('status', Bill::STATUS_CURRENT)
+                        ->with('payments:id,bill_id,paid_out');
+                }])
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate()
-                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'deleted_at')
+                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'bills', 'deleted_at')
+                ->transform(function ($item) {
+                    $totalInvoicie = $item['bills']->sum('total');
+                    $totalDiscount = $item['bills']->sum('discount');
+                    $totalPaidOut = $item['bills']->pluck('payments')->flatten(1)->sum('paid_out');
+                    return array_merge($item, [
+                        'bills' => ($totalInvoicie - $totalDiscount) - $totalPaidOut
+                    ]);
+                })
         ]);
     }
 
@@ -64,7 +77,7 @@ class ClientController extends Controller
             ])
         );
 
-        return Redirect::route('invoice.clients.index', $slug)->with(['flash_success' => 'Cliente creado correctamente.']);
+        return Redirect::route('invoice.clients.index', $slug)->with('success', 'Cliente creado correctamente.');
     }
 
     /**
@@ -108,10 +121,11 @@ class ClientController extends Controller
                 'phone' => ['nullable', 'string', 'min:10', 'max:13', Rule::unique('invoice_clients')->ignore($client->id)],
             ])
         );
+
         return Redirect::route('invoice.clients.edit', [
             'slug' => $slug,
             'client' => $client
-        ])->with(['flash_success' => 'Cliente actualizado correctamente.']);
+        ])->with('success', 'Cliente actualizado correctamente.');
     }
 
     /**

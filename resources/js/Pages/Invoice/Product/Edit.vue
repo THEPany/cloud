@@ -11,9 +11,9 @@
         <div class="bg-white rounded shadow overflow-hidden max-w-lg">
             <form @submit.prevent="submit">
                 <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-                    <text-input v-model="form.name" :errors="errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre"/>
-                    <text-input v-model="form.cost" :errors="errors.cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo"/>
-                    <textarea-input v-model="form.description" :errors="errors.description" class="pr-6 pb-8 w-full" label="Descripcion" />
+                    <text-input v-model="form.name" :errors="$page.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre"/>
+                    <text-input v-model="form.cost" :errors="$page.errors.cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo"/>
+                    <textarea-input v-model="form.description" :errors="$page.errors.description" class="pr-6 pb-8 w-full" label="Descripcion" />
                 </div>
                 <div class="px-8 py-4 bg-grey-lightest border-t border-grey-lighter flex items-center">
                     <button v-if="!product.deleted_at" class="text-red hover:underline" tabindex="-1" type="button" @click="destroy">Eliminar producto</button>
@@ -45,11 +45,7 @@
         },
         props: {
             organization: Object,
-            product: Object,
-            errors: {
-                type: Object,
-                default: () => ({}),
-            },
+            product: Object
         },
         remember: 'form',
         data() {

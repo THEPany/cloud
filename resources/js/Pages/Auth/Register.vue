@@ -6,13 +6,13 @@
                 <div class="px-10 py-12">
                     <h1 class="text-center font-bold text-3xl">Register new account</h1>
                     <div class="mx-auto mt-6 w-24 border-b-2" />
-                    <text-input v-model="form.name" :errors="errors.name" class="mt-10" label="Name" type="text" autofocus autocapitalize="off" />
-                    <text-input v-model="form.email" :errors="errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
-                    <text-input v-model="form.password" :errors="errors.password" class="mt-6" label="Password" type="password" />
+                    <text-input v-model="form.name" :errors="$page.errors.name" class="mt-10" label="Name" type="text" autofocus autocapitalize="off" />
+                    <text-input v-model="form.email" :errors="$page.errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
+                    <text-input v-model="form.password" :errors="$page.errors.password" class="mt-6" label="Password" type="password" />
                     <text-input v-model="form.password_confirmation" class="mt-6" label="Confirm Password" type="password" />
                 </div>
                 <div class="px-10 py-4 bg-grey-lightest border-t border-grey-lighter flex justify-between items-center">
-                    <a class="hover:underline" tabindex="-1" :href="route('login')">Already have an account?</a>
+                    <inertia-link class="hover:underline" tabindex="-1" :href="route('login')">Already have an account?</inertia-link>
                     <loading-button :loading="sending" class="btn-indigo" type="submit">Register</loading-button>
                 </div>
             </form>
@@ -30,9 +30,6 @@
             LoadingButton,
             Logo,
             TextInput,
-        },
-        props: {
-            errors: Object,
         },
         data() {
             return {

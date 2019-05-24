@@ -7,8 +7,8 @@
         <div class="bg-white rounded shadow">
             <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
                 <select-search-input v-model="form.client_id" :options="clients" :custom-label="customLabel"
-                                     :errors="errors.client_id" class="pr-6 pb-8 w-full lg:w-1/4" label="Cliente" :placeholder="'Cliente al contado'" />
-                <select-input v-model="form.bill_type" :errors="errors.bill_type"
+                                     :errors="$page.errors.client_id" class="pr-6 pb-8 w-full lg:w-1/4" label="Cliente" :placeholder="'Cliente al contado'" />
+                <select-input v-model="form.bill_type" :errors="$page.errors.bill_type"
                               class="pr-6 pb-8 w-full lg:w-1/4"
                               select-class="vc-shadow vc-appearance-none vc-border vc-rounded vc-w-full vc-py-2 vc-px-3 vc-text-gray-800 vc-bg-white vc-leading-tight focus:vc-outline-none focus:vc-shadow-outline"
                               label="Tipo de factura">
@@ -17,9 +17,9 @@
                 <div class="pr-6 pb-8 w-full lg:w-1/4">
                     <label class="form-label">Fecha de expiración:</label>
                     <text-date-picker v-model="date"/>
-                    <div v-if="errors.expired_at && errors.expired_at.length" class="form-error">{{ errors.expired_at[0] }}</div>
+                    <div v-if="$page.errors.expired_at && $page.errors.expired_at.length" class="form-error">{{ $page.errors.expired_at[0] }}</div>
                 </div>
-                <text-input v-model="form.discount" class="pr-6 pb-8 w-full lg:w-1/4"
+                <text-input v-model="form.discount" :errors="$page.errors.discount"  class="pr-6 pb-8 w-full lg:w-1/4"
                             input-class="vc-shadow vc-appearance-none vc-border vc-rounded vc-w-full vc-py-2 vc-px-3 vc-text-gray-800 vc-bg-white vc-leading-tight focus:vc-outline-none focus:vc-shadow-outline"
                             label="Descuento" type="number" />
             </div>
@@ -92,7 +92,7 @@
                         <td class="border-t px-6 py-4" colspan="6">
                             <div class="flex flex-wrap">
                                 <div class="w-1/2">
-                                    <text-input v-model="form.paid_out" class="pr-6 pb-8 w-full"
+                                    <text-input v-model="form.paid_out" :errors="$page.errors.paid_out" class="pr-6 pb-8 w-full"
                                                 input-class="vc-shadow vc-appearance-none vc-border vc-rounded vc-w-full vc-py-2 vc-px-3 vc-text-gray-800 vc-bg-white vc-leading-tight focus:vc-outline-none focus:vc-shadow-outline"
                                                 label="Importe" type="number" />
                                 </div>
@@ -125,7 +125,7 @@
                 <loading-button :disabled="form.products.length === 0"
                                 :class="{'disabled':form.products.length === 0}"
                                 :loading="sending"
-                                class="btn-green" type="submit">Generar y Imprimir</loading-button>
+                                class="btn-green" type="submit">Crear factura</loading-button>
             </form>
         </div>
     </layout>
@@ -154,11 +154,7 @@
             organization: Object,
             clients: Array,
             products: Array,
-            type_bill: Array,
-            errors: {
-                type: Object,
-                default: () => ({}),
-            },
+            type_bill: Array
         },
         remember: 'form',
         data() {

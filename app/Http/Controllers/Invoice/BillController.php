@@ -2,33 +2,47 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Model\Invoice\Invoice;
-use App\Organization;
-use App\Model\Invoice\Bill;
-use App\Model\Invoice\Product;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use App\Organization;
+use App\Http\Controllers\Controller;
+use App\Model\Invoice\{Invoice, Bill};
+use Illuminate\Support\Facades\Request;
 
 class BillController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Inertia\Response
      */
-    public function index()
+    public function index($slug)
     {
-        //
+        return Inertia::render('Invoice/Bill/Index', [
+            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'filters' => Request::all('search', 'status', 'bill_type'),
+            'bills' => $organization->bills()
+                ->with('client:id,name,last_name', 'payments:id,bill_id,paid_out')
+                ->orderByDesc('created_at')
+                ->filter(Request::only('search', 'status', 'bill_type'))
+                ->paginate()
+                ->only('id', 'client', 'created_at', 'total', 'discount','payments', 'expired_at', 'status')
+                ->transform(function ($item) {
+                    return array_merge($item, [
+                        'created_at' => $item['created_at']->format('F d, Y'),
+                        'status' => ucwords(strtolower($item['status'])),
+                        'payments' => ($item['total'] - $item['discount']) - $item['payments']->sum('paid_out'),
+                        'expired_at' => optional($item['expired_at'])->format('F d, Y'),
+                    ]);
+                })
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param $slug
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function create($slug)
     {
@@ -49,18 +63,23 @@ class BillController extends Controller
     public function store($slug)
     {
         $invoice = new Invoice(Request::instance());
+
         return $invoice->create(Organization::whereSlug($slug)->firstOrFail());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @param \App\Model\Invoice\Bill $bill
+     * @return \Inertia\Response
      */
-    public function edit($id)
+    public function edit($slug, Bill $bill)
     {
-        //
+        return Inertia::render('Invoice/Bill/Edit', [
+            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'bill' => $bill
+        ]);
     }
 
     /**

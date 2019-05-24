@@ -19,9 +19,9 @@
                                 <inertia-link :href="route('login')" class="bg-white text-indigo font-normal py-3 px-6 border border-grey-light rounded shadow hover:shadow-md mr-3">
                                     Log in
                                 </inertia-link>
-                                <a :href="route('register')" class="bg-indigo text-white font-normal py-3 px-6 border rounded shadow hover:shadow-md">
+                                <inertia-link :href="route('register')" class="bg-indigo text-white font-normal py-3 px-6 border rounded shadow hover:shadow-md">
                                     Get Started
-                                </a>
+                                </inertia-link>
                             </div>
                         </div>
                     </nav>

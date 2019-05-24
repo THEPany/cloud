@@ -61,7 +61,7 @@ class OrganizationController extends Controller
             ])
         );
 
-        return redirect()->route('organizations.index')->with(['flash_success' => 'Organización creada correctamente.']);
+        return redirect()->route('organizations.index')->with('success','Organización creada correctamente.');
     }
 
     /**
@@ -110,7 +110,8 @@ class OrganizationController extends Controller
                 'postal_code' => ['nullable', 'max:25'],
             ])
         );
-        return Redirect::route('organizations.edit', $organization)->with(['flash_success' => 'Organización actualizada correctamente.']);
+
+        return Redirect::route('organizations.edit', $organization)->with('success', 'Organización actualizada correctamente.');
     }
 
     /**
@@ -121,6 +122,7 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         $organization->delete();
+
         return Redirect::route('organizations.edit', $organization);
     }
 
@@ -131,6 +133,7 @@ class OrganizationController extends Controller
     public function restore(Organization $organization)
     {
         $organization->restore();
+
         return Redirect::route('organizations.edit', $organization);
     }
 
@@ -142,7 +145,9 @@ class OrganizationController extends Controller
     public function sendInvitationLink(Organization $organization, User $user)
     {
         abort_unless($this->restrictionContributor($organization), 403, 'Límite alcanzado, por favor actualice su plan.');
+
         Mail::to($user)->send(new OrganizationInvitationEmail($organization, $user));
+
         return Redirect::route('organizations.edit', $organization);
     }
 
@@ -154,6 +159,7 @@ class OrganizationController extends Controller
     public function invitation(Organization $organization, User $user)
     {
         $organization->addContributor($user);
+
         return Redirect::route('home.index');
     }
 
@@ -165,7 +171,9 @@ class OrganizationController extends Controller
     public function removeContributor(Organization $organization, User $user)
     {
         abort_if($organization->user_id === $user->id, 403, 'No se puede eliminar el propietario de la organización.');
+
         $organization->removeContributor($user);
+
         return Redirect::route('organizations.edit', $organization);
     }
 

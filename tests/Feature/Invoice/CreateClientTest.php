@@ -37,7 +37,7 @@ class CreateClientTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Cliente creado correctamente.']);
+        $response->assertSessionHas(['success' => 'Cliente creado correctamente.']);
 
         $this->assertDatabaseHas('invoice_clients', [
             'organization_id' => $this->organization->id,
@@ -61,7 +61,7 @@ class CreateClientTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Cliente creado correctamente.']);
+        $response->assertSessionHas(['success' => 'Cliente creado correctamente.']);
 
         $this->assertDatabaseHas('invoice_clients', [
             'organization_id' => $this->organization->id,

@@ -36,7 +36,7 @@ class CreateProductTest extends TestCase
         ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Producto creado correctamente.']);
+        $response->assertSessionHas(['success' => 'Producto creado correctamente.']);
 
         $this->assertDatabaseHas('invoice_products', [
             'organization_id' => $this->organization->id,
@@ -58,7 +58,7 @@ class CreateProductTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Producto creado correctamente.']);
+        $response->assertSessionHas(['success' => 'Producto creado correctamente.']);
 
         $this->assertDatabaseHas('invoice_products', [
             'organization_id' => $this->organization->id,

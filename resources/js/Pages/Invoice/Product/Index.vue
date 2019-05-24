@@ -24,7 +24,7 @@
                 </tr>
                 <tr v-for="product in products.data" :key="product.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" :href="route('invoice.products.edit', {'slug':organization.slug, 'product':product.id})">
+                        <inertia-link class="px-6 py-4 flex items-center focus:text-green" :href="route('invoice.products.edit', {'slug':organization.slug, 'product':product.id})">
                             {{ product.name }}
                             <icon v-if="product.deleted_at" name="trash" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
                         </inertia-link>
@@ -96,7 +96,7 @@
                     let query = _.pickBy(this.form)
                     this.$inertia.replace(this.route('invoice.products.index',  {
                         ...{'slug': this.organization.slug},
-                        ...Object.keys(query).length ? query : { '': '' }
+                        ...Object.keys(query).length ? query : ''
                     }))
                 }, 150),
                 deep: true,

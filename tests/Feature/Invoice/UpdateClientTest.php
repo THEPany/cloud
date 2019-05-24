@@ -44,7 +44,7 @@ class UpdateClientTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Cliente actualizado correctamente.']);
+        $response->assertSessionHas(['success' => 'Cliente actualizado correctamente.']);
 
         $this->assertDatabaseHas('invoice_clients', [
             'organization_id' => $this->organization->id,
@@ -71,7 +71,7 @@ class UpdateClientTest extends TestCase
             ]);
 
         $response->assertStatus(Response::HTTP_FOUND);
-        $response->assertSessionHas(['flash_success' => 'Cliente actualizado correctamente.']);
+        $response->assertSessionHas(['success' => 'Cliente actualizado correctamente.']);
 
         $this->assertDatabaseHas('invoice_clients', [
             'organization_id' => $this->organization->id,
