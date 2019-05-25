@@ -39,7 +39,11 @@ class Bill extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'invoice_bill_product');
+        return $this->belongsToMany(Product::class, 'invoice_bill_product')->withPivot([
+            'cost',
+            'quantity',
+            'sub_total',
+        ]);
     }
 
     public function payments()
@@ -50,6 +54,16 @@ class Bill extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function subTotal()
+    {
+        return $this->products->pluck('pivot')->sum->sub_total;
+    }
+
+    public function total()
+    {
+        return $this->subTotal() - $this->discount;
     }
 
     public function scopeFilter($query, array $filters)

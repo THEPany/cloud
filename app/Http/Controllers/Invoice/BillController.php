@@ -7,6 +7,7 @@ use App\Organization;
 use App\Http\Controllers\Controller;
 use App\Model\Invoice\{Invoice, Bill};
 use Illuminate\Support\Facades\Request;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class BillController extends Controller
 {
@@ -67,6 +68,16 @@ class BillController extends Controller
         return $invoice->create(Organization::whereSlug($slug)->firstOrFail());
     }
 
+    public function show($slug, Bill $bill)
+    {
+        return PDF::loadView('invoices.default', [
+            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'bill' => $bill->load('client', 'products'),
+            'sub_total' => $bill->subTotal(),
+            'total' => $bill->total()
+        ])->stream("Factura-{$bill->id}-{$bill->created_at->format('dmY')}");
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,9 +87,16 @@ class BillController extends Controller
      */
     public function edit($slug, Bill $bill)
     {
+        $bill->load('client', 'products');
+
         return Inertia::render('Invoice/Bill/Edit', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
-            'bill' => $bill
+            'bill' => [
+                'id' => $bill->id,
+                'client' => $bill->client ? "{$bill->client->name} {$bill->client->last_name}" : 'Client al contado',
+                'status' => $bill->status,
+                'total' => $bill->total,
+            ]
         ]);
     }
 
