@@ -87,4 +87,5 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::get('bills/create', 'Invoice\BillController@create')->name('invoice.bills.create');
     Route::get('bills/{bill}', 'Invoice\BillController@show')->name('invoice.bills.show');
     Route::get('bills/{bill}/edit', 'Invoice\BillController@edit')->name('invoice.bills.edit');
+    Route::put('bills/{bill}', 'Invoice\BillController@update')->name('invoice.bills.update');
 });

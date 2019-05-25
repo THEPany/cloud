@@ -32,15 +32,12 @@ class ClientController extends Controller
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate()
-                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'bills', 'deleted_at')
                 ->transform(function ($item) {
-                    $totalInvoicie = $item['bills']->sum('total');
-                    $totalDiscount = $item['bills']->sum('discount');
-                    $totalPaidOut = $item['bills']->pluck('payments')->flatten(1)->sum('paid_out');
-                    return array_merge($item, [
-                        'bills' => ($totalInvoicie - $totalDiscount) - $totalPaidOut
-                    ]);
+                    return collect(array_merge($item->toArray(), [
+                        'bills' => $item->allDueAmount()
+                    ]));
                 })
+                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'bills', 'deleted_at')
         ]);
     }
 

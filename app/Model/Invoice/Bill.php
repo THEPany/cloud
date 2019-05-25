@@ -66,6 +66,11 @@ class Bill extends Model
         return $this->subTotal() - $this->discount;
     }
 
+    public function dueAmount()
+    {
+        return $this->total() - $this->payments->sum->paid_out;
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {

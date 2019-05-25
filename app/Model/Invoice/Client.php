@@ -43,6 +43,11 @@ class Client extends Model
         return $this->hasMany(Bill::class);
     }
 
+    public function allDueAmount()
+    {
+        return $this->bills->map->dueAmount()->sum();
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {

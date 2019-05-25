@@ -27,15 +27,15 @@ class BillController extends Controller
                 ->orderByDesc('created_at')
                 ->filter(Request::only('search', 'status', 'bill_type'))
                 ->paginate()
-                ->only('id', 'client', 'created_at', 'total', 'discount','payments', 'expired_at', 'status')
                 ->transform(function ($item) {
-                    return array_merge($item, [
-                        'created_at' => $item['created_at']->format('F d, Y'),
-                        'status' => ucwords(strtolower($item['status'])),
-                        'payments' => ($item['total'] - $item['discount']) - $item['payments']->sum('paid_out'),
-                        'expired_at' => optional($item['expired_at'])->format('F d, Y'),
-                    ]);
+                    return collect(array_merge($item->toArray(), [
+                        'created_at' => $item->created_at->format('F d, Y'),
+                        'status' => ucwords(strtolower($item->status)),
+                        'payments' => $item->dueAmount(),
+                        'expired_at' => optional($item->expired_at)->format('F d, Y'),
+                    ]));
                 })
+                ->only('id', 'client', 'created_at', 'total', 'discount','payments', 'expired_at', 'status')
         ]);
     }
 
@@ -72,9 +72,11 @@ class BillController extends Controller
     {
         return PDF::loadView('invoices.default', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
-            'bill' => $bill->load('client', 'products'),
+            'bill' => $bill->load('client', 'products', 'payments'),
             'sub_total' => $bill->subTotal(),
-            'total' => $bill->total()
+            'paid_date' => $bill->payments->sum->paid_out,
+            'total' => $bill->total(),
+            'due_amount' => $bill->dueAmount()
         ])->stream("Factura-{$bill->id}-{$bill->created_at->format('dmY')}");
     }
 
@@ -95,7 +97,7 @@ class BillController extends Controller
                 'id' => $bill->id,
                 'client' => $bill->client ? "{$bill->client->name} {$bill->client->last_name}" : 'Client al contado',
                 'status' => $bill->status,
-                'total' => $bill->total,
+                'due_amount' => $bill->dueAmount(),
             ]
         ]);
     }

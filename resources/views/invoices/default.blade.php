@@ -98,23 +98,37 @@
                     <tr>
                         <td class="thick-line"></td>
                         <td class="thick-line"></td>
-                        <td class="thick-line text-center"><strong>Sub total</strong></td>
+                        <td class="thick-line text-right"><strong>Sub total</strong></td>
                         <td class="thick-line text-right">${{ number_format($sub_total, 2) }}</td>
                     </tr>
                     @if($bill->discount > 0)
                         <tr>
                             <td class="no-line"></td>
                             <td class="no-line"></td>
-                            <td class="no-line text-center"><strong>Descuento</strong></td>
+                            <td class="no-line text-right"><strong>Descuento</strong></td>
                             <td class="no-line text-right">{{ $bill->discount }}</td>
                         </tr>
                     @endif
                     <tr>
                         <td class="no-line"></td>
                         <td class="no-line"></td>
-                        <td class="no-line text-center"><strong>Total</strong></td>
+                        <td class="no-line text-right"><strong>Pagado hasta la fecha</strong></td>
+                        <td class="no-line text-right">${{ number_format($paid_date, 2) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="no-line"></td>
+                        <td class="no-line"></td>
+                        <td class="no-line text-right"><strong>Total</strong></td>
                         <td class="no-line text-right">${{ number_format($total, 2) }}</td>
                     </tr>
+                    @if($due_amount > 0)
+                        <tr>
+                            <td class="no-line"></td>
+                            <td class="no-line"></td>
+                            <td class="no-line text-right"><strong>Balance despues del pago</strong></td>
+                            <td class="no-line text-right">${{ number_format($due_amount, 2) }}</td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>

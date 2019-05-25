@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Laravel\Cashier\Subscription;
-use App\{Model\Invoice\Client, Model\Invoice\Product, User, Organization, Plan, Restriction};
+use App\{Model\Invoice\Bill, Model\Invoice\Client, Model\Invoice\Product, User, Organization, Plan, Restriction};
 
 /*
 |--------------------------------------------------------------------------
@@ -97,5 +97,15 @@ $factory->define(Client::class, function (Faker $faker) {
         'name' => $faker->name,
         'last_name' => $faker->lastName,
         'id_card' => $faker->randomDigit,
+    ];
+});
+
+$factory->define(Bill::class, function (Faker $faker) {
+    return [
+        'organization_id' => factory(Organization::class),
+        'client_id' => factory(Client::class),
+        'bill_type' => $faker->randomElement(Bill::ALL_BILL_TYPE),
+        'status' => $faker->randomElement(Bill::ALL_STATUS),
+        'total' => $faker->randomDigit,
     ];
 });
