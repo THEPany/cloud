@@ -18,8 +18,7 @@ class Bill extends Model
 
     const TYPE_CASH = 'CONTADO';
     const TYPE_CREDIT = 'CREDITO';
-    const TYPE_QUOTATION = 'COTIZACION';
-    const ALL_BILL_TYPE = [self::TYPE_CASH, self::TYPE_CREDIT, self::TYPE_QUOTATION];
+    const ALL_BILL_TYPE = [self::TYPE_CASH, self::TYPE_CREDIT];
 
     const STATUS_PAID = 'PAGADA';
     const STATUS_CURRENT = 'EN PROCESO';

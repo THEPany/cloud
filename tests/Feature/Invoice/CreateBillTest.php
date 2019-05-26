@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Invoice;
 
-use App\Model\Invoice\{Bill, Client, Product};
-use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Organization;
 use Laravel\Cashier\Subscription;
+use App\Model\Invoice\{Bill, Client, Product};
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateBillTest extends TestCase

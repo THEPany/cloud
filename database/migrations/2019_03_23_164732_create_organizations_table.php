@@ -18,8 +18,8 @@ class CreateOrganizationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('email', 50)->nullable();
-            $table->string('phone', 50)->nullable();
+            $table->string('email', 255)->unique()->nullable();
+            $table->string('phone', 50)->unique()->nullable();
             $table->string('address', 255)->nullable();
             $table->string('city', 50)->nullable();
             $table->string('region', 50)->nullable();

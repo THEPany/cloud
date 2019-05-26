@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Invoice;
 
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use App\Organization;
 use App\Model\Invoice\Product;
@@ -25,6 +26,9 @@ class ProductController extends Controller
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate()
                 ->only('id', 'name', 'cost', 'description', 'deleted_at')
+                ->transform(function ($item) {
+                    return array_merge($item, ['description' => Str::limit($item['description'], 50, '...')]);
+                })
         ]);
     }
 

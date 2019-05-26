@@ -66,8 +66,8 @@ class Invoice
     {
         return array_filter(array_merge(
             $this->request->validate([
-                'client_id' => ['nullable', 'numeric', Rule::requiredIf($this->request->bill_type === Bill::TYPE_CREDIT || $this->request->bill_type === Bill::TYPE_QUOTATION)],
-                'bill_type' => ['required', 'in:'. Bill::TYPE_CASH.','.Bill::TYPE_CREDIT.','.Bill::TYPE_QUOTATION],
+                'client_id' => ['nullable', 'numeric', Rule::requiredIf($this->request->bill_type === Bill::TYPE_CREDIT)],
+                'bill_type' => ['required', Rule::in(Bill::ALL_BILL_TYPE)],
                 'discount' => ['nullable', 'numeric'],
                 'expired_at' => ['nullable', 'date', Rule::requiredIf($this->request->bill_type === Bill::TYPE_CREDIT)]
             ]),

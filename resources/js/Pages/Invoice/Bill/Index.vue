@@ -8,7 +8,6 @@
                     <option :value="null" />
                     <option value="CONTADO">Contado</option>
                     <option value="CREDITO">Credito</option>
-                    <option value="COTIZACION">Cotizacion</option>
                 </select>
                 <label class="block text-grey-darkest mt-4">Estado:</label>
                 <select v-model="form.status" class="mt-1 w-full form-select">

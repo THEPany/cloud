@@ -68,9 +68,15 @@ class ClientController extends Controller
             request()->validate([
                 'name' => ['required', 'string', 'min:3', 'max:100'],
                 'last_name' => ['required', 'string', 'min:3', 'max:100'],
-                'id_card' => ['required', 'string', 'min:13', 'max:13', 'unique:invoice_clients'],
-                'email' => ['nullable', 'string', 'email', 'unique:invoice_clients'],
-                'phone' => ['nullable', 'string', 'min:10', 'max:13', 'unique:invoice_clients'],
+                'id_card' => ['required', 'string', 'min:13', 'max:13', Rule::unique('invoice_clients')->where(function ($query) use ($organization) {
+                    return $query->where('organization_id', $organization->id);
+                })],
+                'email' => ['nullable', 'string', 'email', Rule::unique('invoice_clients')->where(function ($query) use ($organization) {
+                    return $query->where('organization_id', $organization->id);
+                })],
+                'phone' => ['nullable', 'string', 'min:10', 'max:13', Rule::unique('invoice_clients')->where(function ($query) use ($organization) {
+                    return $query->where('organization_id', $organization->id);
+                })],
             ])
         );
 
