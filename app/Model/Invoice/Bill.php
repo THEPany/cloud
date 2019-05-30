@@ -36,9 +36,9 @@ class Bill extends Model
         return $this->belongsTo(Organization::class);
     }
 
-    public function products()
+    public function articles()
     {
-        return $this->belongsToMany(Product::class, 'invoice_bill_product')->withPivot([
+        return $this->belongsToMany(Article::class, 'invoice_bill_article')->withPivot([
             'cost',
             'quantity',
             'sub_total',
@@ -57,7 +57,7 @@ class Bill extends Model
 
     public function subTotal()
     {
-        return $this->products->pluck('pivot')->sum->sub_total;
+        return $this->articles->pluck('pivot')->sum->sub_total;
     }
 
     public function total()

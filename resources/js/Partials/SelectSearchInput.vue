@@ -3,9 +3,20 @@
         <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
         <multiselect :id="id" ref="input" v-model="selected" :options="options"
                      :custom-label="customLabel" v-bind="$attrs"
-                     :searchable="true" open-direction="bottom" :limit="5"
+                     :searchable="true" :limit="2"
                      :placeholder="placeholder"
-        ></multiselect>
+        >
+            <template slot="singleLabel" slot-scope="props">
+                <span class="option__desc">
+                    <slot name="singleLabel" :slot-scope="props.option"></slot>
+                </span>
+            </template>
+            <template slot="option" slot-scope="props">
+                <div class="option__desc">
+                    <slot name="multipleLabel" :slot-scope="props.option"></slot>
+                </div>
+            </template>
+        </multiselect>
         <div v-if="errors.length" class="form-error">{{ errors[0] }}</div>
     </div>
 </template>
@@ -19,6 +30,12 @@
                 default() {
                     return `select-input-${this._uid}`
                 },
+            },
+            returnObject: {
+              type: Boolean,
+              default() {
+                return false;
+              }
             },
             value: [String, Number, Boolean, Object],
             label: String,
@@ -41,7 +58,11 @@
         },
         watch: {
             selected(selected) {
-                this.$emit('input', selected instanceof Object ? selected[this.valueParam] : selected)
+                if(this.returnObject === false) {
+                  this.$emit('input', selected instanceof Object ? selected[this.valueParam] : selected);
+                }else {
+                  this.$emit('input', selected);
+                }
             },
         },
         methods: {

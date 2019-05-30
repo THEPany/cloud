@@ -63,14 +63,14 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(function () {
     Route::get('home','Invoice\HomeController@index')->name('invoice.home.index');
 
-    // Product
-    Route::get('products', 'Invoice\ProductController@index')->name('invoice.products.index');
-    Route::get('products/create', 'Invoice\ProductController@create')->name('invoice.products.create');
-    Route::post('products', 'Invoice\ProductController@store')->name('invoice.products.store');
-    Route::get('products/{product}/edit', 'Invoice\ProductController@edit')->name('invoice.products.edit');
-    Route::put('products/{product}', 'Invoice\ProductController@update')->name('invoice.products.update');
-    Route::delete('products/{product}', 'Invoice\ProductController@destroy')->name('invoice.products.destroy');
-    Route::put('products/{product}/restore', 'Invoice\ProductController@restore')->name('invoice.products.restore');
+    // Article
+    Route::get('articles', 'Invoice\ArticleController@index')->name('invoice.articles.index');
+    Route::get('articles/create', 'Invoice\ArticleController@create')->name('invoice.articles.create');
+    Route::post('articles', 'Invoice\ArticleController@store')->name('invoice.articles.store');
+    Route::get('articles/{article}/edit', 'Invoice\ArticleController@edit')->name('invoice.articles.edit');
+    Route::put('articles/{article}', 'Invoice\ArticleController@update')->name('invoice.articles.update');
+    Route::delete('articles/{article}', 'Invoice\ArticleController@destroy')->name('invoice.articles.destroy');
+    Route::put('articles/{article}/restore', 'Invoice\ArticleController@restore')->name('invoice.articles.restore');
 
     // Client
     Route::get('clients', 'Invoice\ClientController@index')->name('invoice.clients.index');
@@ -88,4 +88,10 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::get('bills/{bill}', 'Invoice\BillController@show')->name('invoice.bills.show');
     Route::get('bills/{bill}/edit', 'Invoice\BillController@edit')->name('invoice.bills.edit');
     Route::put('bills/{bill}', 'Invoice\BillController@update')->name('invoice.bills.update');
+    Route::get('bill/{bill}/preview', 'Invoice\BillController@preview')->name('invoice.bills.preview');
+
+    Route::get('payments', 'Invoice\PaymentController@index')->name('invoice.payments.index');
+    Route::get('payments/create', 'Invoice\PaymentController@create')->name('invoice.payments.create');
+    Route::post('payments', 'Invoice\PaymentController@store')->name('invoice.payments.store');
+    Route::get('payments/{payment}', 'Invoice\PaymentController@show')->name('invoice.payments.show');
 });

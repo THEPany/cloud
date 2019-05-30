@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Support\Str;
-use App\Model\Invoice\{Bill, Product, Client};
+use App\Model\Invoice\{Bill, Article, Client, Payment};
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Organization extends Model
@@ -55,9 +55,9 @@ class Organization extends Model
         $this->contributors()->detach($user->id);
     }
 
-    public function products()
+    public function articles()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Article::class);
     }
 
     public function clients()
@@ -68,6 +68,11 @@ class Organization extends Model
     public function bills()
     {
         return $this->hasMany(Bill::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Bill::class);
     }
 
     public function scopeFilter($query, array $filters)

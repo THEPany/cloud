@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OrganizationInvitationEmail extends Mailable
+class OrganizationInvitationEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -37,7 +37,9 @@ class OrganizationInvitationEmail extends Mailable
     public function __construct(Organization $organization, User $user)
     {
         $this->organization = $organization;
+
         $this->user = $user;
+
         $this->url = URL::temporarySignedRoute(
             'organizations.invitation', now()->addMinutes(30), ['organization' => $organization, 'user' => $user]
         );

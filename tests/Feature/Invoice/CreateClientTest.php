@@ -98,7 +98,7 @@ class CreateClientTest extends TestCase
         $subscription = factory(Subscription::class)->state('active')->create();
 
         $response = $this->withoutExceptionHandling()->actingAs($subscription->user)
-            ->post(route('invoice.products.store', $this->organization->slug), [
+            ->post(route('invoice.articles.store', $this->organization->slug), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -123,7 +123,7 @@ class CreateClientTest extends TestCase
         ]);
 
         $response = $this->withExceptionHandling()->actingAs($this->subscription->user)
-            ->post(route('invoice.products.store', $this->organization->slug), [
+            ->post(route('invoice.articles.store', $this->organization->slug), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'

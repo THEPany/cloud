@@ -3,6 +3,7 @@ import PortalVue from 'portal-vue'
 import Vue from 'vue'
 import Multiselect from 'vue-multiselect'
 import VCalendar from 'v-calendar'
+import Vue2Filters from 'vue2-filters';
 
 Vue.config.productionTip = false
 Vue.mixin({ methods: { route: (...args) => window.route(...args).url() } })
@@ -12,7 +13,7 @@ Vue.component('multiselect', Multiselect)
 Vue.use(VCalendar, {
     componentPrefix: 'text',
 })
-
+Vue.use(Vue2Filters)
 
 
 let app = document.getElementById('app')

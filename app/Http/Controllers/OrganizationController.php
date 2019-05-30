@@ -12,7 +12,7 @@ use App\{Organization, Plan, Restriction, User};
 class OrganizationController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function index()
     {
@@ -32,7 +32,7 @@ class OrganizationController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function create()
     {
@@ -66,7 +66,7 @@ class OrganizationController extends Controller
 
     /**
      * @param \App\Organization $organization
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function edit(Organization $organization)
     {
@@ -148,7 +148,7 @@ class OrganizationController extends Controller
 
         Mail::to($user)->send(new OrganizationInvitationEmail($organization, $user));
 
-        return Redirect::route('organizations.edit', $organization);
+        return Redirect::route('organizations.edit', $organization)->with('success', 'Invitacion enviada a '. $user->email );
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Model;
 use App\Organization;
 use Closure;
 
@@ -27,6 +28,12 @@ class ApplicationAuthorizedMiddleware
         abort_unless($this->organization->user->isSubscribed(),
             403,
             'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');
+
+        foreach ($request->route()->parameters() as $parameter) {
+            if ($parameter instanceof Model && isset($parameter->organization_id)) {
+               abort_unless($this->organization->id == $parameter->organization_id, 404);
+            }
+        }
 
         return $next($request);
     }

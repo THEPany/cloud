@@ -20,7 +20,6 @@ class CreateInvoiceBills extends Migration
             $table->unsignedBigInteger('client_id')->nullable();
             $table->enum('bill_type', Bill::ALL_BILL_TYPE);
             $table->enum('status', Bill::ALL_STATUS);
-            $table->integer('total');
             $table->integer('discount')->default(0);
             $table->dateTime('expired_at')->nullable();
             $table->timestamps();

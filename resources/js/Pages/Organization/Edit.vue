@@ -36,9 +36,19 @@
                 <h2 class="font-bold text-2xl">Usuarios</h2>
             </div>
             <div class="w-3/4 p-0 m-0">
-                <multiselect v-model="value" :options="users" :custom-label="customLabel"
-                             :searchable="true" placeholder="Buscar colaborador" open-direction="bottom"
-                             :limit="5" @input="addContributor" ></multiselect>
+                <multiselect v-model="value" label="email" track-by="email" :options="users" :show-labels="false"
+                             :searchable="true" :limit="5" placeholder="Buscar colaborador" open-direction="bottom" @input="addContributor">
+                    <template slot="singleLabel" slot-scope="props">
+                        <span class="option__desc"><span class="option__title">{{ props.option.email }}</span></span>
+                    </template>
+                    <template slot="option" slot-scope="props">
+                        <div class="option__desc">
+                            <span class="option__title font-bold">{{ props.option.email }}</span>
+                            <br>
+                            <span class="option__small text-xs">{{ props.option.name }}</span>
+                        </div>
+                    </template>
+                </multiselect>
             </div>
         </div>
 
@@ -127,9 +137,6 @@
                 if (confirm('¿Estás seguro de que quieres restaurar esta organización?')) {
                     this.$inertia.put(this.route('organizations.restore', this.organization.id))
                 }
-            },
-            customLabel ({ name, email }) {
-                return `${name} – ${email}`
             },
             addContributor() {
                 if (confirm('¿Desea enviar una invitación a este usuario para que sea parte de su organización?')) {

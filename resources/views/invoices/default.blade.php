@@ -84,15 +84,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($bill->products as $product)
+                    @foreach($bill->articles as $article)
                         <tr>
                             <td>
-                                {{ $product->name }} <br>
-                                {{ $product->description }}
+                                {{ $article->name }} <br>
+                                {{ $article->description }}
                             </td>
-                            <td class="text-center">${{ number_format($product->pivot->cost, 2) }}</td>
-                            <td class="text-center">{{ $product->pivot->quantity }}</td>
-                            <td class="text-right">${{ number_format($product->pivot->sub_total) }}</td>
+                            <td class="text-center">${{ number_format($article->pivot->cost, 2) }}</td>
+                            <td class="text-center">{{ $article->pivot->quantity }}</td>
+                            <td class="text-right">${{ number_format($article->pivot->sub_total) }}</td>
                         </tr>
                     @endforeach
                     <tr>

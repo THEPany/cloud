@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Model\Invoice\Bill;
 use Inertia\Inertia;
 use App\Organization;
+use App\Model\Invoice\Bill;
 use App\Model\Invoice\Client;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -26,7 +26,7 @@ class ClientController extends Controller
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'clients' => $organization->clients()
                 ->with(['bills' => function ($bill) {
-                    $bill->select('id', 'client_id', 'total', 'discount')->where('status', Bill::STATUS_CURRENT)
+                    $bill->select('id', 'client_id', 'discount')->where('status', Bill::STATUS_CURRENT)
                         ->with('payments:id,bill_id,paid_out');
                 }])
                 ->orderBy('name')
@@ -45,7 +45,7 @@ class ClientController extends Controller
      * Show the form for creating a new resource.
      *
      * @param $slug
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
      */
     public function create($slug)
     {

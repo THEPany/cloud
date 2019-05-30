@@ -29,18 +29,18 @@
                     <th class="px-6 pt-6 pb-4">No. Factura</th>
                     <th class="px-6 pt-6 pb-4">Cliente</th>
                     <th class="px-6 pt-6 pb-4">Fecha</th>
-                    <th class="px-6 pt-6 pb-4">Importe</th>
+                    <th class="px-6 pt-6 pb-4">Total General</th>
                     <th class="px-6 pt-6 pb-4" colspan="2">Estado</th>
                 </tr>
                 <tr v-for="bill in bills.data" :key="bill.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center focus:text-green" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})">
+                        <inertia-link class="px-6 py-4 flex items-center focus:text-green" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})">
                             {{ bill.id }}
                             <icon v-if="bill.deleted_at" name="trash" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})">
                             <div class="flex flex-col">
                                 {{ bill.client ? `${bill.client.name} ${bill.client.last_name}` : 'Al contado' }}
                                 <small class="pt-2 text-grey-dark">Debe: ${{ bill.payments }}</small>
@@ -48,12 +48,12 @@
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})">
                             {{ bill.created_at }}
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})">
                             <div class="flex flex-col">
                                 {{ bill.total }}
                                 <small v-if="bill.expired_at" class="pt-2 text-grey-dark">Exp. {{ bill.expired_at }}</small>
@@ -61,7 +61,7 @@
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})">
                             <div v-if="bill.status == 'Pagada'" class="bg-green-lightest text-green-darker text-sm font-bold rounded-full py-2 px-4">{{ bill.status }}</div>
                             <div v-else-if="bill.status == 'En Proceso'" class="bg-blue-lightest text-blue-darker text-sm font-bold rounded-full py-2 px-4">{{ bill.status }}</div>
                             <div v-else-if="bill.status == 'Expirada'" class="bg-yellow-lightest text-yellow-darker text-sm font-bold rounded-full py-2 px-4">{{ bill.status }}</div>
@@ -69,7 +69,7 @@
                         </inertia-link>
                     </td>
                     <td class="border-t w-px">
-                        <inertia-link class="px-4 flex items-center" :href="route('invoice.bills.edit', {'slug':organization.slug, 'bill':bill.id})" tabindex="-1">
+                        <inertia-link class="px-4 flex items-center" :href="route('invoice.bills.show', {'slug':organization.slug, 'bill':bill.id})" tabindex="-1">
                             <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
                         </inertia-link>
                     </td>
