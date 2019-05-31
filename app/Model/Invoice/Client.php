@@ -11,7 +11,15 @@ class Client extends Model
     use SoftDeletes;
 
     protected $table = 'invoice_clients';
+
     protected $guarded = [];
+
+    protected $appends = ['all_due_amount'];
+
+    public function getAllDueAmountAttribute()
+    {
+        return $this->bills->map->dueAmount()->sum();
+    }
 
     public function setNameAttribute($value)
     {
@@ -41,11 +49,6 @@ class Client extends Model
     public function bills()
     {
         return $this->hasMany(Bill::class);
-    }
-
-    public function allDueAmount()
-    {
-        return $this->bills->map->dueAmount()->sum();
     }
 
     public function scopeFilter($query, array $filters)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Invoice;
 
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Inertia\Inertia;
 use App\Organization;
 use App\Model\Invoice\Payment;
@@ -21,7 +22,12 @@ class PaymentController extends Controller
         return Inertia::render('Invoice/Payment/Index', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'trashed'),
-            'payments' => $organization->payments()->with('bill')->paginate()->only('id', 'paid_out', 'created_at', 'bill')
+            'payments' => $organization->payments()->with('bill')->paginate()
+                ->transform(function ($item) {
+                    return collect($item->toArray())->merge([
+                        'created_at' => $item->created_at->format('d-m-Y')
+                    ]);
+                })->only('id', 'paid_out', 'created_at', 'bill')
         ]);
     }
 
@@ -80,11 +86,23 @@ class PaymentController extends Controller
      *
      * @param $slug
      * @param \App\Model\Invoice\Payment $payment
-     * @return void
+     * @return \Inertia\Response
      */
     public function show($slug, Payment $payment)
     {
-        //
+        return Inertia::render('Invoice/Payment/Show', [
+            'organization' =>  $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'payment' => $payment,
+            'bill' => $payment->bill()->with('client')->whereId($payment->bill_id)->firstOrFail()
+        ]);
+    }
+
+    public function preview($slug, Payment $payment)
+    {
+        return PDF::loadView('payments.default', [
+            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'payment' => $payment->load('bill'),
+        ])->stream("Recibo-{$payment->id}-{$payment->created_at->format('dmY')}");
     }
 
     /**

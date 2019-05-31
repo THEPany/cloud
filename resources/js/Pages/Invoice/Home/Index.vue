@@ -1,5 +1,5 @@
 <template>
-    <layout title="Invoice Home">
+    <layout title="Home">
         <h1 class="mb-8 font-bold text-3xl">Home</h1>
     </layout>
 </template>

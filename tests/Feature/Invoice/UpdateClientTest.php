@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Invoice;
 
+use Bouncer;
 use Tests\TestCase;
 use App\Organization;
 use App\Model\Invoice\Client;
@@ -33,6 +34,8 @@ class UpdateClientTest extends TestCase
     /** @test */
     function subcribed_user_can_update_invoice_clients()
     {
+       Bouncer::allow($this->subscription->user)->to('update', $this->client);
+
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
             ->put(route('invoice.clients.update', [
                 'slug' => $this->organization->slug,
@@ -57,10 +60,12 @@ class UpdateClientTest extends TestCase
     /** @test */
     function other_subcribed_user_can_update_invoice_clients_if_are_invited_to_organization()
     {
-        $other_subscription = factory(Subscription::class)->state('active')->create();
-        $this->organization->addContributor($other_subscription->user);
+        $subscriptionB = factory(Subscription::class)->state('active')->create();
+        $this->organization->addContributor($subscriptionB->user);
 
-        $response = $this->withoutExceptionHandling()->actingAs($other_subscription->user)
+        Bouncer::allow($subscriptionB->user)->to('update', $this->client);
+
+        $response = $this->withoutExceptionHandling()->actingAs($subscriptionB->user)
             ->put(route('invoice.clients.update', [
                 'slug' => $this->organization->slug,
                 'client' => $this->client

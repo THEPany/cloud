@@ -18,26 +18,23 @@ class ClientController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index($slug)
     {
+        $this->authorize('view', Client::class);
+
         return Inertia::render('Invoice/Client/Index', [
-            'filters' => Request::all('search', 'trashed'),
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'filters' => Request::all('search', 'trashed'),
             'clients' => $organization->clients()
                 ->with(['bills' => function ($bill) {
-                    $bill->select('id', 'client_id', 'discount')->where('status', Bill::STATUS_CURRENT)
-                        ->with('payments:id,bill_id,paid_out');
+                    $bill->with('payments:id,bill_id,paid_out')->where('status', Bill::STATUS_CURRENT);
                 }])
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate()
-                ->transform(function ($item) {
-                    return collect(array_merge($item->toArray(), [
-                        'bills' => $item->allDueAmount()
-                    ]));
-                })
-                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'bills', 'deleted_at')
+                ->only('id', 'name', 'last_name', 'id_card', 'phone', 'all_due_amount', 'deleted_at')
         ]);
     }
 
@@ -46,9 +43,12 @@ class ClientController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create($slug)
     {
+        $this->authorize('create', Client::class);
+
         return Inertia::render('Invoice/Client/Create', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail()
         ]);
@@ -59,9 +59,12 @@ class ClientController extends Controller
      *
      * @param $slug
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store($slug)
     {
+        $this->authorize('create', Client::class);
+
         $organization = Organization::whereSlug($slug)->firstOrFail();
 
         $organization->clients()->create(
@@ -88,10 +91,13 @@ class ClientController extends Controller
      *
      * @param $slug
      * @param \App\Model\Invoice\Client $client
-     * @return \Illuminate\Contracts\View\View
+     * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($slug, Client $client)
     {
+        $this->authorize('update', $client);
+
         return Inertia::render('Invoice/Client/Edit', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
             'client' => [
@@ -112,9 +118,12 @@ class ClientController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Client $client
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update($slug, Client $client)
     {
+        $this->authorize('update', $client);
+
         $client->update(
             request()->validate([
                 'name' => ['required', 'string', 'min:3', 'max:100'],
@@ -139,6 +148,8 @@ class ClientController extends Controller
      */
     public function destroy($slug, Client $client)
     {
+        $this->authorize('delete', $client);
+
         $client->delete();
 
         return Redirect::route('invoice.clients.edit', [
@@ -151,9 +162,12 @@ class ClientController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Client $client
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function restore($slug, Client $client)
     {
+        $this->authorize('delete', $client);
+
         $client->restore();
 
         return Redirect::route('invoice.clients.edit', [

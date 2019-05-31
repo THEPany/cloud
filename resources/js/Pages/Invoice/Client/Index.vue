@@ -30,7 +30,7 @@
                                    {{ client.name }} {{ client.last_name}}
                                    <icon v-if="client.deleted_at" name="trash" class="flex-no-shrink w-3 h-3 fill-grey ml-2" />
                                </div>
-                                <small class="pt-2 text-grey-dark">Debe: ${{ client.bills }}</small>
+                                <small class="pt-2 text-grey-dark">Debe: {{ client.all_due_amount | currency }}</small>
                            </div>
                         </inertia-link>
                     </td>

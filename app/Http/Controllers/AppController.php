@@ -10,14 +10,15 @@ class AppController extends Controller
     public function index($slug)
     {
         return Inertia::render('App/Index', [
-            'organization' => Organization::whereSlug($slug)->first()->only('name', 'slug')
+            'organization' => Organization::whereSlug($slug)->firstOrFail()
         ]);
     }
 
-    public function other($organization)
+    public function collaborator($slug)
     {
-        return Inertia::render('App/Other', [
-            'organization' => $organization
+        return Inertia::render('App/Collaborator', [
+            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'contributors' => $organization->contributors()->paginate()
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use Bouncer;
 use App\Organization;
 
 class OrganizationObserver
@@ -15,6 +16,7 @@ class OrganizationObserver
     public function created(Organization $organization)
     {
         $organization->addContributor($organization->user);
+        Bouncer::allow($organization->user)->everything();
     }
 
     /**

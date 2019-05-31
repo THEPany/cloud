@@ -15,6 +15,7 @@
         "laravel/cashier-braintree": "^3.1",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "silber/bouncer": "v1.0.0-rc.5",
         "tightenco/ziggy": "^0.6.9"
     },
     "require-dev": {

@@ -69,6 +69,7 @@
     import Layout from '@/Partials/Layout'
     import Pagination from '@/Partials/Pagination'
     import SearchFilter from '@/Partials/SearchFilter'
+
     export default {
         components: {
             Icon,

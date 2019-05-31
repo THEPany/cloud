@@ -18,6 +18,7 @@ class CreateInvoicePayments extends Migration
             $table->unsignedBigInteger('bill_id');
             $table->decimal('paid_out');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

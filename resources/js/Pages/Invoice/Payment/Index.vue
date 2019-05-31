@@ -1,5 +1,5 @@
 <template>
-    <layout title="Articulos">
+    <layout title="Pagos">
         <h1 class="mb-8 font-bold text-3xl">Pagos</h1>
         <div class="mb-6 flex justify-between items-center">
             <search-filter v-model="form.search" class="w-full max-w-sm mr-4" @reset="reset">

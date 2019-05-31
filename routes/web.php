@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Aplication
     Route::get('apps/{slug}', 'AppController@index')->name('apps.index');
+    Route::get('apps/{slug}/collaborators', 'AppController@collaborator')->name('apps.collaborator');
 });
 
 // Facturacion
@@ -90,8 +91,10 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::put('bills/{bill}', 'Invoice\BillController@update')->name('invoice.bills.update');
     Route::get('bill/{bill}/preview', 'Invoice\BillController@preview')->name('invoice.bills.preview');
 
+    // Pagos
     Route::get('payments', 'Invoice\PaymentController@index')->name('invoice.payments.index');
     Route::get('payments/create', 'Invoice\PaymentController@create')->name('invoice.payments.create');
     Route::post('payments', 'Invoice\PaymentController@store')->name('invoice.payments.store');
     Route::get('payments/{payment}', 'Invoice\PaymentController@show')->name('invoice.payments.show');
+    Route::get('payments/{payment}/preview', 'Invoice\PaymentController@preview')->name('invoice.payments.preview');
 });

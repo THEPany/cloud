@@ -16,6 +16,10 @@ class Bill extends Model
         'expired_at' => 'date'
     ];
 
+    protected $appends = [
+        'total', 'due_amount'
+    ];
+
     const TYPE_CASH = 'CONTADO';
     const TYPE_CREDIT = 'CREDITO';
     const ALL_BILL_TYPE = [self::TYPE_CASH, self::TYPE_CREDIT];
@@ -25,6 +29,16 @@ class Bill extends Model
     const STATUS_EXPIRED = 'EXPIRADA';
     const STATUS_CANCEL = 'CANCELADA';
     const ALL_STATUS = [self::STATUS_PAID, self::STATUS_CURRENT, self::STATUS_EXPIRED, self::STATUS_CANCEL];
+
+    public function getTotalAttribute()
+    {
+        return $this->total();
+    }
+
+    public function getDueAmountAttribute()
+    {
+        return $this->dueAmount();
+    }
 
     public function setExpiredAtAttribute($value)
     {

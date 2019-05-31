@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index($slug)
     {
         return Inertia::render('Invoice/Home/Index', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail()->only('slug', 'name')
+            'organization' => Organization::whereSlug($slug)->firstOrFail()
         ]);
     }
 }

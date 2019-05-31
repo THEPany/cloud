@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Invoice;
 
+use App\Model\Invoice\Client;
+use Bouncer;
 use Tests\TestCase;
 use App\Organization;
 use Laravel\Cashier\Subscription;
@@ -29,6 +31,8 @@ class CreateClientTest extends TestCase
     /** @test */
     function subcribed_user_can_create_invoice_clients()
     {
+        Bouncer::allow($this->subscription->user)->to('create', Client::class);
+
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
             ->post(route('invoice.clients.store', $this->organization->slug), [
                 'name' => 'Cristian',
@@ -51,6 +55,9 @@ class CreateClientTest extends TestCase
     function other_subcribed_user_can_create_invoice_client_if_are_invited_to_organization()
     {
         $other_subscription = factory(Subscription::class)->state('active')->create();
+
+        Bouncer::allow($other_subscription->user)->to('create', Client::class);
+
         $this->organization->addContributor($other_subscription->user);
 
         $response = $this->withoutExceptionHandling()->actingAs($other_subscription->user)
