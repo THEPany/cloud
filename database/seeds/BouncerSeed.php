@@ -1,7 +1,8 @@
 <?php
 
-use App\Model\Invoice\Client;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Model\Invoice\{Client, Article, Bill, Payment};
 
 class BouncerSeed extends Seeder
 {
@@ -12,9 +13,18 @@ class BouncerSeed extends Seeder
      */
     public function run()
     {
+        try{
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+            DB::table('abilities')->truncate();
+        }catch (Exception $e) {
+            dd($e->getMessage());
+        }
+
         // Permisos | Habilidades
         $this->allAbility();
         $this->clientAbilities();
+        $this->articlesAbilities();
+        $this->billsAbilities();
 
         // Roles
         $this->createRoles();
@@ -53,7 +63,7 @@ class BouncerSeed extends Seeder
 
     /*
     |--------------------------------------------------------------------------
-    | Productos Habilidades
+    | Clientes Habilidades
     |--------------------------------------------------------------------------
     |
     | Todas la habilidades para la gestion del crud de productos
@@ -75,6 +85,71 @@ class BouncerSeed extends Seeder
         Bouncer::ability()->createForModel(Client::class, [
             'name' => 'delete',
             'title' => 'Eliminar cliente'
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Clientes Habilidades
+    |--------------------------------------------------------------------------
+    |
+    | Todas la habilidades para la gestion del crud de articulos
+    */
+    protected function articlesAbilities(): void
+    {
+        Bouncer::ability()->createForModel(Article::class, [
+            'name' => 'view',
+            'title' => 'Ver articulos'
+        ]);
+        Bouncer::ability()->createForModel(Article::class, [
+            'name' => 'create',
+            'title' => 'Crear articulo'
+        ]);
+        Bouncer::ability()->createForModel(Article::class, [
+            'name' => 'update',
+            'title' => 'Actualizar articulo'
+        ]);
+        Bouncer::ability()->createForModel(Article::class, [
+            'name' => 'delete',
+            'title' => 'Eliminar articulo'
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Facturas Habilidades
+    |--------------------------------------------------------------------------
+    |
+    | Todas la habilidades para la gestion del crud de facturas
+    */
+    protected function billsAbilities(): void
+    {
+        Bouncer::ability()->createForModel(Bill::class, [
+            'name' => 'view',
+            'title' => 'Ver facturas'
+        ]);
+        Bouncer::ability()->createForModel(Bill::class, [
+            'name' => 'create',
+            'title' => 'Crear factura'
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pagos Habilidades
+    |--------------------------------------------------------------------------
+    |
+    | Todas la habilidades para la gestion del crud de pagos
+    */
+    protected function PaymentsAbilities(): void
+    {
+        Bouncer::ability()->createForModel(Payment::class, [
+            'name' => 'view',
+            'title' => 'Ver pagos'
+        ]);
+        Bouncer::ability()->createForModel(Payment::class, [
+            'name' => 'create',
+            'title' => 'Crear pago'
         ]);
     }
 

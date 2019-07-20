@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Invoice;
 
-use App\Model\Invoice\Client;
 use Bouncer;
 use Tests\TestCase;
 use App\Organization;
+use App\Model\Invoice\Client;
 use Laravel\Cashier\Subscription;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;

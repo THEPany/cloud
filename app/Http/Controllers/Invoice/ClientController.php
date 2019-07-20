@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Invoice;
 
 use Inertia\Inertia;
 use App\Organization;
-use App\Model\Invoice\Bill;
-use App\Model\Invoice\Client;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
+use App\Model\Invoice\{Client, Bill};
+use Illuminate\Support\Facades\{Request, Redirect};
 
 class ClientController extends Controller
 {

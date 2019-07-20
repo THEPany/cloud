@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Inertia\Inertia;
 use App\Organization;
 use App\Model\Invoice\Payment;
 use App\Http\Controllers\Controller;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Illuminate\Support\Facades\{DB, Redirect, Request, Validator};
 
 class PaymentController extends Controller
@@ -16,9 +16,12 @@ class PaymentController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index($slug)
     {
+        $this->authorize('view', Payment::class);
+
         return Inertia::render('Invoice/Payment/Index', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'trashed'),
@@ -36,14 +39,17 @@ class PaymentController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create($slug)
     {
+        $this->authorize('create', Payment::class);
+
         return Inertia::render('Invoice/Payment/Create', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'clients' => $organization->clients()->with('bills')->get()->map(function ($item) {
                 return collect($item->toArray())->merge([
-                    'pending' => $item->allDueAmount(),
+                    'pending' => $item->all_due_amount,
                     'bills' => $item->bills->map(function ($item) {
                         return collect($item->toArray())->merge([
                            'id' => $item->id,
@@ -61,9 +67,12 @@ class PaymentController extends Controller
      *
      * @param $slug
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store($slug)
     {
+        $this->authorize('create', Payment::class);
+
         $organization = Organization::whereSlug($slug)->firstOrFail();
 
         DB::transaction(function () use ($organization) {
@@ -87,9 +96,12 @@ class PaymentController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Payment $payment
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($slug, Payment $payment)
     {
+        $this->authorize('view', $payment);
+
         return Inertia::render('Invoice/Payment/Show', [
             'organization' =>  $organization = Organization::whereSlug($slug)->firstOrFail(),
             'payment' => $payment,
@@ -99,43 +111,11 @@ class PaymentController extends Controller
 
     public function preview($slug, Payment $payment)
     {
+        $this->authorize('view', $payment);
+
         return PDF::loadView('payments.default', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
             'payment' => $payment->load('bill'),
         ])->stream("Recibo-{$payment->id}-{$payment->created_at->format('dmY')}");
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

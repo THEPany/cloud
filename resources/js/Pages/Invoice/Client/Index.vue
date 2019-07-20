@@ -75,6 +75,7 @@
     import Pagination from '@/Partials/Pagination'
     import Layout from '@/Partials/Invoice/Layout'
     import SearchFilter from '@/Partials/SearchFilter'
+
     export default {
         components: {
             Icon,

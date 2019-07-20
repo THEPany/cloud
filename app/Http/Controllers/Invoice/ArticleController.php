@@ -7,17 +7,19 @@ use App\Organization;
 use Illuminate\Support\Str;
 use App\Model\Invoice\Article;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\{Request, Redirect};
 
 class ArticleController extends Controller
 {
     /**
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index($slug)
     {
+        $this->authorize('view', Article::class);
+
         return Inertia::render('Invoice/Article/Index', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'trashed'),
@@ -35,9 +37,12 @@ class ArticleController extends Controller
     /**
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create($slug)
     {
+        $this->authorize('create', Article::class);
+
         return Inertia::render('Invoice/Article/Create', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
         ]);
@@ -46,9 +51,12 @@ class ArticleController extends Controller
     /**
      * @param $slug
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store($slug)
     {
+        $this->authorize('create', Article::class);
+
         $organization = Organization::whereSlug($slug)->firstOrFail();
 
         $organization->articles()->create(
@@ -67,9 +75,12 @@ class ArticleController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Article $article
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($slug, Article $article)
     {
+        $this->authorize('update', $article);
+
         return Inertia::render('Invoice/Article/Edit', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
             'article' => [
@@ -86,9 +97,12 @@ class ArticleController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Article $article
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update($slug, Article $article)
     {
+        $this->authorize('update', $article);
+
         $article->update(
             request()->validate([
                 'name' => ['required', 'string', 'min:5', 'max:100'],
@@ -111,6 +125,8 @@ class ArticleController extends Controller
      */
     public function destroy($slug, Article $article)
     {
+        $this->authorize('delete', $article);
+
         $article->delete();
         return Redirect::route('invoice.articles.edit', [
             'slug' => $slug,
@@ -122,9 +138,12 @@ class ArticleController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Article $article
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function restore($slug, Article $article)
     {
+        $this->authorize('delete', $article);
+
         $article->restore();
         return Redirect::route('invoice.articles.edit', [
             'slug' => $slug,

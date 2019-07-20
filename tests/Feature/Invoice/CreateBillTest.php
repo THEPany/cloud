@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Invoice;
 
+use Bouncer;
 use Tests\TestCase;
 use App\Organization;
 use Laravel\Cashier\Subscription;

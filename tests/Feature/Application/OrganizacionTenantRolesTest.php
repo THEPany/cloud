@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Invoice;
+namespace Tests\Feature\Application;
 
 use Bouncer;
 use Tests\TestCase;

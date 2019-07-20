@@ -2,11 +2,12 @@
 
 namespace Tests\Feature\Invoice;
 
-use App\Model\Invoice\Article;
-use Symfony\Component\HttpFoundation\Response;
+use Bouncer;
 use Tests\TestCase;
 use App\Organization;
+use App\Model\Invoice\Article;
 use Laravel\Cashier\Subscription;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateArticleTest extends TestCase
@@ -33,6 +34,8 @@ class UpdateArticleTest extends TestCase
     /** @test */
     function subcribed_user_can_update_invoice_articles()
     {
+        Bouncer::allow($this->subscription->user)->to('update', $this->article);
+
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
             ->put(route('invoice.articles.update', [
                 'slug' => $this->organization->slug,
@@ -56,6 +59,9 @@ class UpdateArticleTest extends TestCase
     function other_subcribed_user_can_update_invoice_articles_if_are_invited_to_organization()
     {
         $other_subscription = factory(Subscription::class)->state('active')->create();
+
+        Bouncer::allow($other_subscription->user)->to('update', $this->article);
+
         $this->organization->addContributor($other_subscription->user);
 
         $response = $this->withoutExceptionHandling()->actingAs($other_subscription->user)

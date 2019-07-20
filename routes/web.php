@@ -58,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
     // Aplication
     Route::get('apps/{slug}', 'AppController@index')->name('apps.index');
     Route::get('apps/{slug}/collaborators', 'AppController@collaborator')->name('apps.collaborator');
+    Route::get('apps/{slug}/collaborators/{user}', 'AppController@assignPermission')->name('apps.collaborator.permissions');
+    Route::post('apps/{slug}/collaborators/{user}', 'AppController@permission')->name('apps.collaborator.permissions.store');
 });
 
 // Facturacion

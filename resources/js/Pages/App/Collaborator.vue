@@ -21,17 +21,17 @@
                     </tr>
                     <tr v-for="contributor in contributors.data" :key="contributor.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                         <td class="border-t">
-                            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" href="#">
+                            <inertia-link :href="route('apps.collaborator.permissions', {'slug':organization.slug, 'user':contributor})" class="px-6 py-4 flex items-center focus:text-indigo">
                                 {{ contributor.name }}
                             </inertia-link>
                         </td>
                         <td class="border-t">
-                            <inertia-link class="px-6 py-4 flex items-center" href="#" tabindex="-1">
+                            <inertia-link :href="route('apps.collaborator.permissions', {'slug':organization.slug, 'user':contributor})" class="px-6 py-4 flex items-center" tabindex="-1">
                                 {{ contributor.email }}
                             </inertia-link>
                         </td>
                         <td class="border-t w-px">
-                            <inertia-link class="px-4 flex items-center" href="#" tabindex="-1">
+                            <inertia-link :href="route('apps.collaborator.permissions', {'slug':organization.slug, 'user':contributor})" class="px-4 flex items-center" tabindex="-1">
                                 <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
                             </inertia-link>
                         </td>

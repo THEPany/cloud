@@ -7,9 +7,8 @@ use App\Organization;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Model\Invoice\{Invoice, Bill};
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+use Illuminate\Support\Facades\{Request, Redirect};
 
 class BillController extends Controller
 {
@@ -18,9 +17,12 @@ class BillController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index($slug)
     {
+        $this->authorize('view', Bill::class);
+
         return Inertia::render('Invoice/Bill/Index', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'status', 'bill_type'),
@@ -47,9 +49,12 @@ class BillController extends Controller
      *
      * @param $slug
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create($slug)
     {
+        $this->authorize('create', Bill::class);
+
         return Inertia::render('Invoice/Bill/Create', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'clients' => $organization->clients->map->only('id', 'name', 'last_name', 'id_card'),
@@ -68,9 +73,12 @@ class BillController extends Controller
      *
      * @param $slug
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store($slug)
     {
+        $this->authorize('create', Bill::class);
+
         $organization = Organization::whereSlug($slug)->firstOrFail();
 
         $bill = Invoice::make(Request::instance())->create($organization);
@@ -83,9 +91,12 @@ class BillController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Bill $bill
      * @return \Inertia\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($slug, Bill $bill)
     {
+        $this->authorize('view', $bill);
+
         $bill->load('client', 'articles');
 
         return Inertia::render('Invoice/Bill/Show', [
@@ -107,9 +118,12 @@ class BillController extends Controller
      * @param $slug
      * @param \App\Model\Invoice\Bill $bill
      * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function preview($slug, Bill $bill)
     {
+        $this->authorize('view', $bill);
+
         return PDF::loadView('invoices.default', [
             'organization' => Organization::whereSlug($slug)->firstOrFail(),
             'bill' => $bill->load('client', 'articles', 'payments'),
@@ -118,40 +132,5 @@ class BillController extends Controller
             'total' => $bill->total(),
             'due_amount' => $bill->dueAmount()
         ])->stream("Factura-{$bill->id}-{$bill->created_at->format('dmY')}");
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $slug
-     * @param \App\Model\Invoice\Bill $bill
-     * @return void
-     */
-    public function edit($slug, Bill $bill)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param $slug
-     * @param \App\Model\Invoice\Bill $bill
-     * @return void
-     */
-    public function update($slug, Bill $bill)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
