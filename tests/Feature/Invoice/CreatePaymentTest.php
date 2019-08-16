@@ -4,9 +4,10 @@ namespace Tests\Feature\Invoice;
 
 use Tests\TestCase;
 use App\Organization;
+use App\Model\Invoice\{Bill};
+use App\Model\Inventory\Article;
 use Laravel\Cashier\Subscription;
 use Illuminate\Support\Facades\DB;
-use App\Model\Invoice\{Bill,Article};
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

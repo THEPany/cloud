@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Laravel\Cashier\Subscription;
-use App\{Model\Invoice\Bill, Model\Invoice\Client, Model\Invoice\Article, User, Organization, Plan, Restriction};
+use App\{Model\Inventory\Article, Model\Invoice\Bill, Model\Person\Client, User, Organization, Plan, Restriction};
 
 /*
 |--------------------------------------------------------------------------

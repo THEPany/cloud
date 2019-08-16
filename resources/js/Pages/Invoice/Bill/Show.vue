@@ -62,7 +62,7 @@
 
 <script>
   import Icon from '@/Partials/Icon'
-  import Layout from '@/Partials/Invoice/Layout'
+  import Layout from '@/Pages/Invoice/Partials/Layout'
   import LoadingButton from '@/Partials/LoadingButton'
   import SelectInput from '@/Partials/SelectInput'
   import TextInput from '@/Partials/TextInput'

@@ -5,7 +5,7 @@ namespace Tests\Feature\Application;
 use Bouncer;
 use Tests\TestCase;
 use App\Organization;
-use App\Model\Invoice\Client;
+use App\Model\Person\Client;
 use Laravel\Cashier\Subscription;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -32,7 +32,7 @@ class OrganizacionTenantRolesTest extends TestCase
         $organizationA->addContributor($subscriptionA->user);
 
         $this->withoutExceptionHandling()->actingAs($subscriptionA->user)
-            ->post(route('invoice.clients.store', $organizationA->slug), [
+            ->post(route('person.clients.store', $organizationA->slug), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -46,7 +46,7 @@ class OrganizacionTenantRolesTest extends TestCase
         Bouncer::scope()->to($organizationB->id);
 
         $this->withExceptionHandling()->actingAs($subscriptionA->user)
-            ->post(route('invoice.clients.store', $organizationB->slug), [
+            ->post(route('person.clients.store', $organizationB->slug), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'

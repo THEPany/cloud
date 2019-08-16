@@ -5,10 +5,12 @@ namespace Tests\Feature\Invoice;
 use Bouncer;
 use Tests\TestCase;
 use App\Organization;
+use App\Model\Person\Client;
+use App\Model\Inventory\Article;
 use Laravel\Cashier\Subscription;
+use App\Model\Invoice\{Bill, Payment};
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Model\Invoice\{Bill, Client, Payment, Article};
 
 class CreateBillTest extends TestCase
 {

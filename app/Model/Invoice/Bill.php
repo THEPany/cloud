@@ -4,6 +4,8 @@ namespace App\Model\Invoice;
 
 use Carbon\Carbon;
 use App\Organization;
+use App\Model\Person\Client;
+use App\Model\Inventory\Article;
 use Illuminate\Database\Eloquent\Model;
 
 class Bill extends Model

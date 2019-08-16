@@ -31,27 +31,7 @@ class AppServiceProvider extends ServiceProvider
         \Braintree_Configuration::publicKey(config('services.braintree.public_key'));
         \Braintree_Configuration::privateKey(config('services.braintree.private_key'));
 
-        Inertia::version(function () {
-            return md5_file(public_path('mix-manifest.json'));
-        });
-        Inertia::share(function () {
-            return [
-                'app' => [
-                    'name' => Config::get('app.name'),
-                ],
-                'auth' => [
-                    'user' => Auth::user() ? [
-                        'id' => Auth::user()->id,
-                        'name' => Auth::user()->name,
-                        'email' => Auth::user()->email,
-                    ] : null,
-                ],
-                'flash' => [
-                    'success' => Session::get('success'),
-                ],
-                'errors' => Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [],
-            ];
-        });
+        $this->registerInertia();
         $this->registerLengthAwarePaginator();
     }
 
@@ -65,6 +45,38 @@ class AppServiceProvider extends ServiceProvider
         Date::use(CarbonImmutable::class);
 
         Organization::observe(OrganizationObserver::class);
+    }
+
+    public function registerInertia()
+    {
+        Inertia::version(function () {
+            return md5_file(public_path('mix-manifest.json'));
+        });
+
+        Inertia::share([
+                'app' => [
+                    'name' => Config::get('app.name'),
+                ],
+                'auth' => function () {
+                    return [
+                        'user' => Auth::user() ? [
+                            'id' => Auth::user()->id,
+                            'name' => Auth::user()->name,
+                            'email' => Auth::user()->email,
+                        ] : null,
+                    ];
+                },
+                'flash' => function () {
+                    return [
+                        'success' => Session::get('success'),
+                    ];
+                },
+                'errors' => function () {
+                    return Session::get('errors')
+                        ? Session::get('errors')->getBag('default')->getMessages()
+                        : (object) [];
+                },
+        ]);
     }
 
     protected function registerLengthAwarePaginator()

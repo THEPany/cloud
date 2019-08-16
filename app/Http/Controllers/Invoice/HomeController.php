@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Organization;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use App\Organization;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {

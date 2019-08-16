@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Model;
 use App\Organization;
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class ApplicationAuthorizedMiddleware
 {
@@ -25,9 +26,11 @@ class ApplicationAuthorizedMiddleware
             return redirect()->route('home.index');
         }
 
-        abort_unless($this->organization->user->isSubscribed(),
-            403,
-            'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');
+        if (! App::environment('staging')) {
+            abort_unless($this->organization->user->isSubscribed(),
+                403,
+                'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');
+        }
 
         foreach ($request->route()->parameters() as $parameter) {
             if ($parameter instanceof Model && isset($parameter->organization_id)) {

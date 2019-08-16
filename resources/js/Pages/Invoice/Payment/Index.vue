@@ -68,8 +68,9 @@
   import _ from 'lodash'
   import Icon from '@/Partials/Icon'
   import Pagination from '@/Partials/Pagination'
-  import Layout from '@/Partials/Invoice/Layout'
+  import Layout from '@/Pages/Invoice/Partials/Layout'
   import SearchFilter from '@/Partials/SearchFilter'
+
   export default {
     components: {
       Icon,

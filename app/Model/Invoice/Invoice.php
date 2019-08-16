@@ -5,6 +5,7 @@ namespace App\Model\Invoice;
 use App\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Model\Inventory\Article;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 

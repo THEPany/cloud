@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
 use App\Mail\OrganizationInvitationEmail;
 use App\{Organization, Plan, Restriction, User};
+use Illuminate\Support\Facades\{Redirect, Request, Mail, App};
 
 class OrganizationController extends Controller
 {
@@ -44,9 +42,12 @@ class OrganizationController extends Controller
      */
     public function store()
     {
-        abort_unless($this->restrictionOrganization(), 403, 'Límite alcanzado, por favor actualice su plan.');
+        if (! App::environment('staging')) {
+            abort_unless($this->restrictionOrganization(), 403, 'Límite alcanzado, por favor actualice su plan.');
 
-        abort_unless(auth()->user()->isSubscribed(), 403);
+            abort_unless(auth()->user()->isSubscribed(), 403);
+        }
+
 
         request()->user()->organizations()->create(
             request()->validate([

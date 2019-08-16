@@ -66,24 +66,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(function () {
     Route::get('home','Invoice\HomeController@index')->name('invoice.home.index');
 
-    // Article
-    Route::get('articles', 'Invoice\ArticleController@index')->name('invoice.articles.index');
-    Route::get('articles/create', 'Invoice\ArticleController@create')->name('invoice.articles.create');
-    Route::post('articles', 'Invoice\ArticleController@store')->name('invoice.articles.store');
-    Route::get('articles/{article}/edit', 'Invoice\ArticleController@edit')->name('invoice.articles.edit');
-    Route::put('articles/{article}', 'Invoice\ArticleController@update')->name('invoice.articles.update');
-    Route::delete('articles/{article}', 'Invoice\ArticleController@destroy')->name('invoice.articles.destroy');
-    Route::put('articles/{article}/restore', 'Invoice\ArticleController@restore')->name('invoice.articles.restore');
-
-    // Client
-    Route::get('clients', 'Invoice\ClientController@index')->name('invoice.clients.index');
-    Route::post('clients', 'Invoice\ClientController@store')->name('invoice.clients.store');
-    Route::get('clients/create', 'Invoice\ClientController@create')->name('invoice.clients.create');
-    Route::put('clients/{client}', 'Invoice\ClientController@update')->name('invoice.clients.update');
-    Route::get('clients/{client}/edit', 'Invoice\ClientController@edit')->name('invoice.clients.edit');
-    Route::delete('clients/{client}', 'Invoice\ClientController@destroy')->name('invoice.clients.destroy');
-    Route::put('clients/{client}/restore', 'Invoice\ClientController@restore')->name('invoice.clients.restore');
-
     // Bill
     Route::get('bills', 'Invoice\BillController@index')->name('invoice.bills.index');
     Route::post('bills', 'Invoice\BillController@store')->name('invoice.bills.store');
@@ -99,4 +81,32 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::post('payments', 'Invoice\PaymentController@store')->name('invoice.payments.store');
     Route::get('payments/{payment}', 'Invoice\PaymentController@show')->name('invoice.payments.show');
     Route::get('payments/{payment}/preview', 'Invoice\PaymentController@preview')->name('invoice.payments.preview');
+});
+
+// Inventario
+Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/inventory')->group(function () {
+    Route::get('home','Inventory\HomeController@index')->name('inventory.home');
+
+    // Article
+    Route::get('articles', 'Inventory\ArticleController@index')->name('inventory.articles');
+    Route::get('articles/create', 'Inventory\ArticleController@create')->name('inventory.articles.create');
+    Route::post('articles', 'Inventory\ArticleController@store')->name('inventory.articles.store');
+    Route::get('articles/{article}/edit', 'Inventory\ArticleController@edit')->name('inventory.articles.edit');
+    Route::put('articles/{article}', 'Inventory\ArticleController@update')->name('inventory.articles.update');
+    Route::delete('articles/{article}', 'Inventory\ArticleController@destroy')->name('inventory.articles.destroy');
+    Route::put('articles/{article}/restore', 'Inventory\ArticleController@restore')->name('inventory.articles.restore');
+});
+
+// Person
+Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/person')->group(function () {
+    Route::get('home','Person\HomeController@index')->name('person.home');
+
+    // Client
+    Route::get('clients', 'Person\ClientController@index')->name('person.clients');
+    Route::post('clients', 'Person\ClientController@store')->name('person.clients.store');
+    Route::get('clients/create', 'Person\ClientController@create')->name('person.clients.create');
+    Route::put('clients/{client}', 'Person\ClientController@update')->name('person.clients.update');
+    Route::get('clients/{client}/edit', 'Person\ClientController@edit')->name('person.clients.edit');
+    Route::delete('clients/{client}', 'Person\ClientController@destroy')->name('person.clients.destroy');
+    Route::put('clients/{client}/restore', 'Person\ClientController@restore')->name('person.clients.restore');
 });

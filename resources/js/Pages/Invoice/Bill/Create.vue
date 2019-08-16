@@ -160,7 +160,7 @@
 </template>
 
 <script>
-    import Layout from '@/Partials/Invoice/Layout'
+    import Layout from '@/Pages/Invoice/Partials/Layout'
     import LoadingButton from '@/Partials/LoadingButton'
     import TextInput from '@/Partials/TextInput'
     import TextareaInput from '@/Partials/TextareaInput'

@@ -1,8 +1,10 @@
 <?php
 
+use App\Model\Person\{Client};
 use Illuminate\Database\Seeder;
+use App\Model\Inventory\{Article};
 use Illuminate\Support\Facades\DB;
-use App\Model\Invoice\{Client, Article, Bill, Payment};
+use App\Model\Invoice\{Bill, Payment};
 
 class BouncerSeed extends Seeder
 {

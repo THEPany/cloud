@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import Layout from '@/Partials/Invoice/Layout'
+    import Layout from '@/Pages/Invoice/Partials/Layout'
 
     export default {
         components: {

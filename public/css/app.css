@@ -562,6 +562,24 @@ a:active {
   background-color: #f6993f;
 }
 
+.btn-yellow {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  border-radius: .25rem;
+  background-color: #f2d024;
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.btn-yellow:hover,
+.btn-yellow:focus {
+  background-color: #f6993f;
+}
+
 .disabled {
   opacity: .5;
   cursor: not-allowed;

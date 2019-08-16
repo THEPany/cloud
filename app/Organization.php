@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Support\Str;
-use App\Model\Invoice\{Bill, Article, Client, Payment};
+use App\Model\Person\{Client};
+use App\Model\Inventory\{Article};
+use App\Model\Invoice\{Bill, Payment};
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Organization extends Model
