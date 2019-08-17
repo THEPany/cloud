@@ -32,34 +32,42 @@ Route::post(
 );
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', 'HomeController@index')->name('home.index');
+    Route::get('home', 'Cloud\HomeController@index')->name('home.index');
 
     // Organization
-    Route::get('organizations', 'OrganizationController@index')->name('organizations.index');
-    Route::get('organizations/create', 'OrganizationController@create')->name('organizations.create');
-    Route::post('organizations', 'OrganizationController@store')->name('organizations.store');
-    Route::get('organizations/{organization}/edit', 'OrganizationController@edit')->name('organizations.edit');
-    Route::put('organizations/{organization}', 'OrganizationController@update')->name('organizations.update');
-    Route::delete('organizations/{organization}', 'OrganizationController@destroy')->name('organizations.destroy');
-    Route::put('organizations/{organization}/restore', 'OrganizationController@restore')->name('organizations.restore');
-    Route::post('organizations/{organization}/{user}', 'OrganizationController@sendInvitationLink')->name('organizations.send.invitation');
-    Route::get('organizations/{organization}/{user}', 'OrganizationController@invitation')->name('organizations.invitation')->middleware('signed');
-    Route::delete('organizations/{organization}/{user}', 'OrganizationController@removeContributor')->name('organizations.remove.contributor');
+    Route::get('organizations', 'Cloud\OrganizationController@index')->name('organizations.index');
+    Route::get('organizations/create', 'Cloud\OrganizationController@create')->name('organizations.create');
+    Route::post('organizations', 'Cloud\OrganizationController@store')->name('organizations.store');
+    Route::get('organizations/{organization}/edit', 'Cloud\OrganizationController@edit')->name('organizations.edit');
+    Route::put('organizations/{organization}', 'Cloud\OrganizationController@update')->name('organizations.update');
+    Route::delete('organizations/{organization}', 'Cloud\OrganizationController@destroy')->name('organizations.destroy');
+    Route::put('organizations/{organization}/restore', 'Cloud\OrganizationController@restore')->name('organizations.restore');
+    Route::post('organizations/{organization}/{user}', 'Cloud\OrganizationController@sendInvitationLink')->name('organizations.send.invitation');
+    Route::get('organizations/{organization}/{user}', 'Cloud\OrganizationController@invitation')->name('organizations.invitation')->middleware('signed');
+    Route::delete('organizations/{organization}/{user}', 'Cloud\OrganizationController@removeContributor')->name('organizations.remove.contributor');
 
     // Subscription
-    Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
-    Route::post('subscriptions', 'SubscriptionController@store')->name('subscriptions.store');
-    Route::put('subscriptions', 'SubscriptionController@update')->name('subscriptions.update');
-    Route::post('subscriptions/card', 'SubscriptionController@updateCard')->name('subscriptions.card');
-    Route::get('subscriptions/cancel', 'SubscriptionController@cancelSubscription')->name('subscriptions.cancel');
-    Route::post('subscriptions/resumeSubscription', 'SubscriptionController@resumeSubscription')->name('subscriptions.resumeSubscription');
-    Route::post('subscriptions/cancelNowSubscription', 'SubscriptionController@cancelNowSubscription')->name('subscriptions.cancelNowSubscription');
+    Route::get('subscriptions', 'Cloud\SubscriptionController@index')->name('subscriptions.index');
+    Route::post('subscriptions', 'Cloud\SubscriptionController@store')->name('subscriptions.store');
+    Route::put('subscriptions', 'Cloud\SubscriptionController@update')->name('subscriptions.update');
+    Route::post('subscriptions/card', 'Cloud\SubscriptionController@updateCard')->name('subscriptions.card');
+    Route::get('subscriptions/cancel', 'Cloud\SubscriptionController@cancelSubscription')->name('subscriptions.cancel');
+    Route::post('subscriptions/resumeSubscription', 'Cloud\SubscriptionController@resumeSubscription')->name('subscriptions.resumeSubscription');
+    Route::post('subscriptions/cancelNowSubscription', 'Cloud\SubscriptionController@cancelNowSubscription')->name('subscriptions.cancelNowSubscription');
+});
 
-    // Aplication
-    Route::get('apps/{slug}', 'AppController@index')->name('apps.index');
-    Route::get('apps/{slug}/collaborators', 'AppController@collaborator')->name('apps.collaborator');
-    Route::get('apps/{slug}/collaborators/{user}', 'AppController@assignPermission')->name('apps.collaborator.permissions');
-    Route::post('apps/{slug}/collaborators/{user}', 'AppController@permission')->name('apps.collaborator.permissions.store');
+// aplicaciones
+Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/application')->group(function () {
+    Route::get('home', 'Cloud\ApplicationController@index')->name('apps.index');
+});
+
+// Configuraciones
+Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/setting')->group(function () {
+
+    // Permisos de los colaboradores
+    Route::get('permissions', 'Cloud\CollaboratorPermissionController@index')->name('setting.permissions');
+    Route::get('permissions/{user}', 'Cloud\CollaboratorPermissionController@show')->name('setting.permissions.show');
+    Route::post('permissions/{user}', 'Cloud\CollaboratorPermissionController@store')->name('setting.permissions.store');
 });
 
 // Facturacion

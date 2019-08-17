@@ -26,7 +26,7 @@ class ApplicationAuthorizedMiddleware
             return redirect()->route('home.index');
         }
 
-        if (! App::environment('staging')) {
+        if (App::environment('staging')) {
             abort_unless($this->organization->user->isSubscribed(),
                 403,
                 'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');

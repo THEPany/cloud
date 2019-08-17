@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cloud;
 
+use App\User;
 use Inertia\Inertia;
-use App\{User,Organization};
-use Silber\Bouncer\Database\{Ability, Role};
+use App\Organization;
+use App\Http\Controllers\Controller;
+use Silber\Bouncer\Database\Ability;
 
-class AppController extends Controller
+class CollaboratorPermissionController extends Controller
 {
+    /**
+     * @param $slug
+     * @return \Inertia\Response
+     */
     public function index($slug)
     {
-        return Inertia::render('App/Index', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail()
-        ]);
-    }
-
-    public function collaborator($slug)
-    {
-        return Inertia::render('App/Collaborator', [
+        return Inertia::render('Cloud/Collaborator/Index', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'contributors' => $organization->contributors()->paginate()
         ]);
     }
 
-    public function assignPermission($slug, User $user)
+
+    public function show($slug, User $user)
     {
-        return Inertia::render('App/Permission', [
+        return Inertia::render('Cloud/Collaborator/Permission', [
             'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'permissions' => Ability::all()->groupBy('entity_type'),
             'user' => [
@@ -37,7 +37,7 @@ class AppController extends Controller
         ]);
     }
 
-    public function permission($slug, User $user)
+    public function store($slug, User $user)
     {
         request()->validate(['permissions.*' => ['required','numeric']]);
 
@@ -49,7 +49,6 @@ class AppController extends Controller
             $user->allow($permission);
         });
 
-        return redirect()->route('apps.collaborator', $slug)
-            ->with('success', 'Permisos asignados correctamente.');
+        return redirect()->route('setting.permissions.show', ['slug' => $slug, 'user' => $user])->with('success', 'Permisos asignados correctamente.');
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cloud;
 
 use Inertia\Inertia;
 use Braintree_ClientToken;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\{Organization, Plan, Restriction};
 
 class SubscriptionController extends Controller
