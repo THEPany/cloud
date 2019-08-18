@@ -12,7 +12,7 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Subscription/Index', [
+        return Inertia::render('Cloud/Subscription/Index', [
             'token' => Braintree_ClientToken::generate(),
             'isSubscribed' => auth()->user()->isSubscribed(),
             'isCancel' => optional(optional(auth()->user()->subscription('main'))->ends_at)->format('d/m/Y') ?: '',

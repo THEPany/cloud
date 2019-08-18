@@ -24,7 +24,7 @@
                 </tr>
                 <tr v-for="client in clients.data" :key="client.id" class="hover:bg-grey-lightest focus-within:bg-grey-lightest">
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" :href="route('person.clients.edit', {'slug':organization.slug, 'client':client.id})">
+                        <inertia-link class="px-6 py-4 flex items-center focus:text-indigo" :href="client.url.edit">
                             <div class="flex flex-col">
                                <div>
                                    {{ client.name }} {{ client.last_name}}
@@ -35,17 +35,17 @@
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('person.clients.edit', {'slug':organization.slug, 'client':client.id})" tabindex="-1">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="client.url.edit" tabindex="-1">
                             {{ client.id_card }}
                         </inertia-link>
                     </td>
                     <td class="border-t">
-                        <inertia-link class="px-6 py-4 flex items-center" :href="route('person.clients.edit', {'slug':organization.slug, 'client':client.id})" tabindex="-1">
+                        <inertia-link class="px-6 py-4 flex items-center" :href="client.url.edit" tabindex="-1">
                             {{ client.phone }}
                         </inertia-link>
                     </td>
                     <td class="border-t w-px">
-                        <inertia-link class="px-4 flex items-center" :href="route('person.clients.edit', {'slug':organization.slug, 'client':client.id})" tabindex="-1">
+                        <inertia-link class="px-4 flex items-center" :href="client.url.edit" tabindex="-1">
                             <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
                         </inertia-link>
                     </td>
@@ -101,7 +101,7 @@
                 handler: _.throttle(function() {
                     let query = _.pickBy(this.form)
                     this.$inertia.replace(this.route('person.clients',  {
-                        ...{'slug': this.organization.slug},
+                        ...{'organization': this.organization.slug},
                         ...Object.keys(query).length ? query : ''
                     }))
                 }, 150),

@@ -95,7 +95,7 @@
       form: {
         handler: _.throttle(function() {
           let query = _.pickBy(this.form)
-          this.$inertia.replace(this.route('invoice.payments.index',  {
+          this.$inertia.replace(this.route('invoice.payments',  {
             ...{'slug': this.organization.slug},
             ...Object.keys(query).length ? query : ''
           }))

@@ -38,7 +38,7 @@ class UpdateClientTest extends TestCase
 
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
             ->put(route('person.clients.update', [
-                'slug' => $this->organization->slug,
+                'organization' => $this->organization,
                 'client' => $this->client
             ]), [
                 'name' => 'Cristian',
@@ -67,7 +67,7 @@ class UpdateClientTest extends TestCase
 
         $response = $this->withoutExceptionHandling()->actingAs($subscriptionB->user)
             ->put(route('person.clients.update', [
-                'slug' => $this->organization->slug,
+                'organization' => $this->organization,
                 'client' => $this->client
             ]), [
                 'name' => 'Cristian',
@@ -91,7 +91,7 @@ class UpdateClientTest extends TestCase
     {
         $response = $this->withExceptionHandling()
             ->put(route('person.clients.update', [
-                'slug' => $this->organization->slug,
+                'organization' => $this->organization,
                 'client' => $this->client
             ]), [
                 'name' => 'Cristian',
@@ -117,7 +117,7 @@ class UpdateClientTest extends TestCase
 
         $response = $this->withoutExceptionHandling()->actingAs($subscription->user)
             ->put(route('person.clients.update', [
-                'slug' => $this->organization->slug,
+                'organization' => $this->organization,
                 'client' => $this->client
             ]), [
                 'name' => 'Cristian',
@@ -145,7 +145,7 @@ class UpdateClientTest extends TestCase
 
         $response = $this->withExceptionHandling()->actingAs($this->subscription->user)
             ->put(route('person.clients.update', [
-                'slug' => $this->organization->slug,
+                'organization' => $this->organization,
                 'client' => $this->client
             ]), [
                 'name' => 'Cristian',

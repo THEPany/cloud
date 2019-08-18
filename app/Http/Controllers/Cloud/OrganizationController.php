@@ -24,7 +24,7 @@ class OrganizationController extends Controller
             ->paginate()
             ->only('id', 'user_id', 'name', 'slug', 'email', 'phone', 'address', 'city', 'region', 'country', 'postal_code', 'deleted_at');
 
-        return Inertia::render('Organization/Index', [
+        return Inertia::render('Cloud/Organization/Index', [
             'filters' => Request::all('search', 'trashed'),
             'organizations' => $organizations,
         ]);
@@ -35,7 +35,7 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Organization/Create');
+        return Inertia::render('Cloud/Organization/Create');
     }
 
     /**
@@ -43,12 +43,9 @@ class OrganizationController extends Controller
      */
     public function store()
     {
-        if (App::environment('staging')) {
-            abort_unless($this->restrictionOrganization(), 403, 'Límite alcanzado, por favor actualice su plan.');
+        abort_unless($this->restrictionOrganization(), 403, 'Límite alcanzado, por favor actualice su plan.');
 
-            abort_unless(auth()->user()->isSubscribed(), 403);
-        }
-
+        abort_unless(auth()->user()->isSubscribed(), 403);
 
         request()->user()->organizations()->create(
             request()->validate([
@@ -72,7 +69,7 @@ class OrganizationController extends Controller
      */
     public function edit(Organization $organization)
     {
-        return Inertia::render('Organization/Edit', [
+        return Inertia::render('Cloud/Organization/Edit', [
             'users' => User::whereNotin('id', $organization->contributors()->get()->map->id->toArray())->get()->map->only('id', 'name', 'email'),
             'organization' => [
                 'id' => $organization->id,

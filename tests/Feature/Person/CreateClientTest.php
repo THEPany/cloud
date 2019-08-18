@@ -34,7 +34,7 @@ class CreateClientTest extends TestCase
         Bouncer::allow($this->subscription->user)->to('create', Client::class);
 
         $response = $this->withoutExceptionHandling()->actingAs($this->subscription->user)
-            ->post(route('person.clients.store', $this->organization->slug), [
+            ->post(route('person.clients.store', $this->organization), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -61,7 +61,7 @@ class CreateClientTest extends TestCase
         $this->organization->addContributor($other_subscription->user);
 
         $response = $this->withoutExceptionHandling()->actingAs($other_subscription->user)
-            ->post(route('person.clients.store', $this->organization->slug), [
+            ->post(route('person.clients.store', $this->organization), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -82,7 +82,7 @@ class CreateClientTest extends TestCase
     function guest_cannot_create_person_clients()
     {
         $response = $this->withExceptionHandling()
-            ->post(route('person.clients.store', $this->organization->slug), [
+            ->post(route('person.clients.store', $this->organization), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -105,7 +105,7 @@ class CreateClientTest extends TestCase
         $subscription = factory(Subscription::class)->state('active')->create();
 
         $response = $this->withoutExceptionHandling()->actingAs($subscription->user)
-            ->post(route('person.clients.store', $this->organization->slug), [
+            ->post(route('person.clients.store', $this->organization), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'
@@ -129,8 +129,8 @@ class CreateClientTest extends TestCase
             'ends_at' => now()
         ]);
 
-        $response = $this->withExceptionHandling()->actingAs($this->subscription->user)
-            ->post(route('person.clients.store', $this->organization->slug), [
+        $response = $this->actingAs($this->subscription->user)
+            ->post(route('person.clients.store', $this->organization), [
                 'name' => 'Cristian',
                 'last_name' => 'Gomez',
                 'id_card' => '999-9999999-9'

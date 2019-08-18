@@ -4,6 +4,8 @@ namespace App\Model\Person;
 
 use App\Model;
 use App\Organization;
+use App\Model\Invoice\Bill;
+use App\Presenters\Client\UrlPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
@@ -14,11 +16,18 @@ class Client extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['all_due_amount'];
+    protected $hidden = ['url'];
+
+    protected $appends = ['all_due_amount', 'url'];
 
     public function getAllDueAmountAttribute()
     {
         return $this->bills->map->dueAmount()->sum();
+    }
+
+    public function getUrlAttribute()
+    {
+        return new UrlPresenter($this->organization, $this);
     }
 
     public function setNameAttribute($value)
@@ -62,5 +71,12 @@ class Client extends Model
                 $query->onlyTrashed();
             }
         });
+    }
+
+    public function scopeCurrentBills($query)
+    {
+        $query->with(['bills' => function ($bill) {
+            $bill->with('payments:id,bill_id,paid_out')->where('status', Bill::STATUS_CURRENT);
+        }]);
     }
 }

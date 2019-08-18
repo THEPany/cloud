@@ -21,6 +21,16 @@ class Organization extends Model
     const RESTRICTION_CONTRIBUTOR = 'RESTRICTION.CONTRIBUTOR';
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
      * Set the user's first name.
      *
      * @param  string  $value

@@ -15,17 +15,17 @@ class BillController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index($slug)
+    public function index(Organization $organization)
     {
         $this->authorize('view', Bill::class);
 
         return Inertia::render('Invoice/Bill/Index', [
-            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'status', 'bill_type'),
+            'organization' => $organization,
             'bills' => $organization->bills()
                 ->with('client:id,name,last_name', 'payments:id,bill_id,paid_out')
                 ->orderByDesc('created_at')
@@ -47,16 +47,16 @@ class BillController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function create($slug)
+    public function create(Organization $organization)
     {
         $this->authorize('create', Bill::class);
 
         return Inertia::render('Invoice/Bill/Create', [
-            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'clients' => $organization->clients->map->only('id', 'name', 'last_name', 'id_card'),
             'articles' => $organization->articles->map->only('id', 'name', 'description', 'cost')->transform(function ($item) {
                 return collect($item)->merge([
@@ -71,36 +71,34 @@ class BillController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store($slug)
+    public function store(Organization $organization)
     {
         $this->authorize('create', Bill::class);
 
-        $organization = Organization::whereSlug($slug)->firstOrFail();
-
         $bill = Invoice::make(Request::instance())->create($organization);
 
-        return  Redirect::route('invoice.bills.show', ['slug' => $slug, 'bill' => $bill])
+        return  Redirect::route('invoice.bills.show', ['organization' => $organization, 'bill' => $bill])
             ->with('success', 'Factura creada correctamente.');
     }
 
     /**
-     * @param $slug
+     * @param \App\Organization $organization
      * @param \App\Model\Invoice\Bill $bill
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show($slug, Bill $bill)
+    public function show(Organization $organization, Bill $bill)
     {
         $this->authorize('view', $bill);
 
         $bill->load('client', 'articles');
 
         return Inertia::render('Invoice/Bill/Show', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'bill' => [
                 'id' => $bill->id,
                 'client' => $bill->client ? "{$bill->client->name} {$bill->client->last_name}" : 'Cliente al contado',
@@ -115,17 +113,17 @@ class BillController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param \App\Organization $organization
      * @param \App\Model\Invoice\Bill $bill
      * @return mixed
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function preview($slug, Bill $bill)
+    public function preview(Organization $organization, Bill $bill)
     {
         $this->authorize('view', $bill);
 
         return PDF::loadView('invoices.default', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'bill' => $bill->load('client', 'articles', 'payments'),
             'sub_total' => $bill->subTotal(),
             'paid_date' => $bill->payments->sum->paid_out,

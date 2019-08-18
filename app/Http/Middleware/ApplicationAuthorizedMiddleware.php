@@ -26,11 +26,9 @@ class ApplicationAuthorizedMiddleware
             return redirect()->route('home.index');
         }
 
-        if (App::environment('staging')) {
-            abort_unless($this->organization->user->isSubscribed(),
-                403,
-                'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');
-        }
+        abort_unless($this->organization->user->isSubscribed(),
+            403,
+            'Lo sentimos, pero la suscripción ha caducado, póngase en contacto con el propietario del sitio para evitar la suspensión.');
 
         foreach ($request->route()->parameters() as $parameter) {
             if ($parameter instanceof Model && isset($parameter->organization_id)) {
@@ -43,7 +41,9 @@ class ApplicationAuthorizedMiddleware
 
     protected function getInstance($request)
     {
-        $this->organization = Organization::whereSlug($request->slug)->firstOrFail();
+        $this->organization = $request->organization instanceof Organization
+            ? $request->organization
+            : abort(404);
     }
 
     protected function notAccessToOrganization()

@@ -32,7 +32,7 @@ class CreatePaymentTest extends TestCase
         ]);
 
         $response = $this->withoutExceptionHandling()->actingAs($subscription->user)
-            ->post(route('invoice.payments.store', $organization->slug), [
+            ->post(route('invoice.payments.store', $organization), [
                 'bills' => [
                     [
                         'paid_out' => 400,

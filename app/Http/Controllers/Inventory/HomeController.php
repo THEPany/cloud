@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function index($slug)
+    public function index(Organization $organization)
     {
         return Inertia::render('Inventory/Home/Index', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail()
+            'organization' => $organization
         ]);
     }
 }

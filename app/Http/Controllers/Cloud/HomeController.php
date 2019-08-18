@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Home/Index', [
+        return Inertia::render('Cloud/Home/Index', [
             'filters' => Request::all('search', 'trashed'),
             'organizations' => auth()->user()->collaboratingOrganizations()
                 ->orderBy('name')

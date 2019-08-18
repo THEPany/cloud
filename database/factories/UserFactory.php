@@ -61,7 +61,12 @@ $factory->state(Subscription::class, 'ends', function () {
 
 $factory->define(Organization::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->unique()->company,
+        'email' => $faker->unique()->companyEmail,
+        'phone' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'city' => $faker->city,
+        'postal_code' => $faker->postcode,
         'user_id' => factory(User::class),
     ];
 });

@@ -57,25 +57,16 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // aplicaciones
-Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/application')->group(function () {
+Route::middleware(['auth', 'app.authorized'])->prefix('{organization}/application')->group(function () {
     Route::get('home', 'Cloud\ApplicationController@index')->name('apps.index');
 });
 
-// Configuraciones
-Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/setting')->group(function () {
-
-    // Permisos de los colaboradores
-    Route::get('permissions', 'Cloud\CollaboratorPermissionController@index')->name('setting.permissions');
-    Route::get('permissions/{user}', 'Cloud\CollaboratorPermissionController@show')->name('setting.permissions.show');
-    Route::post('permissions/{user}', 'Cloud\CollaboratorPermissionController@store')->name('setting.permissions.store');
-});
-
 // Facturacion
-Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(function () {
-    Route::get('home','Invoice\HomeController@index')->name('invoice.home.index');
+Route::middleware(['auth', 'app.authorized'])->prefix('{organization}/invoice')->group(function () {
+    Route::get('home','Invoice\HomeController@index')->name('invoice.home');
 
     // Bill
-    Route::get('bills', 'Invoice\BillController@index')->name('invoice.bills.index');
+    Route::get('bills', 'Invoice\BillController@index')->name('invoice.bills');
     Route::post('bills', 'Invoice\BillController@store')->name('invoice.bills.store');
     Route::get('bills/create', 'Invoice\BillController@create')->name('invoice.bills.create');
     Route::get('bills/{bill}', 'Invoice\BillController@show')->name('invoice.bills.show');
@@ -84,7 +75,7 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
     Route::get('bill/{bill}/preview', 'Invoice\BillController@preview')->name('invoice.bills.preview');
 
     // Pagos
-    Route::get('payments', 'Invoice\PaymentController@index')->name('invoice.payments.index');
+    Route::get('payments', 'Invoice\PaymentController@index')->name('invoice.payments');
     Route::get('payments/create', 'Invoice\PaymentController@create')->name('invoice.payments.create');
     Route::post('payments', 'Invoice\PaymentController@store')->name('invoice.payments.store');
     Route::get('payments/{payment}', 'Invoice\PaymentController@show')->name('invoice.payments.show');
@@ -92,7 +83,7 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/invoice')->group(f
 });
 
 // Inventario
-Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/inventory')->group(function () {
+Route::middleware(['auth', 'app.authorized'])->prefix('{organization}/inventory')->group(function () {
     Route::get('home','Inventory\HomeController@index')->name('inventory.home');
 
     // Article
@@ -106,7 +97,7 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/inventory')->group
 });
 
 // Person
-Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/person')->group(function () {
+Route::middleware(['auth', 'app.authorized'])->prefix('{organization}/person')->group(function () {
     Route::get('home','Person\HomeController@index')->name('person.home');
 
     // Client
@@ -117,4 +108,14 @@ Route::middleware(['auth', 'app.authorized'])->prefix('{slug}/person')->group(fu
     Route::get('clients/{client}/edit', 'Person\ClientController@edit')->name('person.clients.edit');
     Route::delete('clients/{client}', 'Person\ClientController@destroy')->name('person.clients.destroy');
     Route::put('clients/{client}/restore', 'Person\ClientController@restore')->name('person.clients.restore');
+});
+
+// Configuraciones
+Route::middleware(['auth', 'app.authorized'])->prefix('{organization}/setting')->group(function () {
+    Route::get('home','Setting\HomeController@index')->name('setting.home');
+
+    // Permisos de los colaboradores
+    Route::get('permissions', 'Setting\CollaboratorPermissionController@index')->name('setting.permissions');
+    Route::get('permissions/{user}', 'Setting\CollaboratorPermissionController@show')->name('setting.permissions.show');
+    Route::post('permissions/{user}', 'Setting\CollaboratorPermissionController@store')->name('setting.permissions.store');
 });

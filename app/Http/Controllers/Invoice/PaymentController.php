@@ -14,17 +14,17 @@ class PaymentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index($slug)
+    public function index(Organization $organization)
     {
         $this->authorize('view', Payment::class);
 
         return Inertia::render('Invoice/Payment/Index', [
-            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
             'filters' => Request::all('search', 'trashed'),
+            'organization' => $organization,
             'payments' => $organization->payments()->with('bill')->paginate()
                 ->transform(function ($item) {
                     return collect($item->toArray())->merge([
@@ -37,16 +37,16 @@ class PaymentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function create($slug)
+    public function create(Organization $organization)
     {
         $this->authorize('create', Payment::class);
 
         return Inertia::render('Invoice/Payment/Create', [
-            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'clients' => $organization->clients()->with('bills')->get()->map(function ($item) {
                 return collect($item->toArray())->merge([
                     'pending' => $item->all_due_amount,
@@ -65,15 +65,13 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store($slug)
+    public function store(Organization $organization)
     {
         $this->authorize('create', Payment::class);
-
-        $organization = Organization::whereSlug($slug)->firstOrFail();
 
         DB::transaction(function () use ($organization) {
             foreach (Request::get('bills') as $item) {
@@ -87,34 +85,34 @@ class PaymentController extends Controller
             }
         });
 
-        return Redirect::route('invoice.payments.index', $slug)->with('success', 'Pago creado correctamente.');
+        return Redirect::route('invoice.payments', $organization)->with('success', 'Pago creado correctamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $slug
+     * @param \App\Organization $organization
      * @param \App\Model\Invoice\Payment $payment
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show($slug, Payment $payment)
+    public function show(Organization $organization, Payment $payment)
     {
         $this->authorize('view', $payment);
 
         return Inertia::render('Invoice/Payment/Show', [
-            'organization' =>  $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'organization' =>  $organization,
             'payment' => $payment,
             'bill' => $payment->bill()->with('client')->whereId($payment->bill_id)->firstOrFail()
         ]);
     }
 
-    public function preview($slug, Payment $payment)
+    public function preview(Organization $organization, Payment $payment)
     {
         $this->authorize('view', $payment);
 
         return PDF::loadView('payments.default', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'payment' => $payment->load('bill'),
         ])->stream("Recibo-{$payment->id}-{$payment->created_at->format('dmY')}");
     }

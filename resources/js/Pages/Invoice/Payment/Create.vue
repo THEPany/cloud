@@ -1,7 +1,7 @@
 <template>
     <layout title="Crear Pago">
         <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link class="text-green-light hover:text-green-dark" :href="route('invoice.payments.index', organization.slug)">Pagos</inertia-link>
+            <inertia-link class="text-green-light hover:text-green-dark" :href="route('invoice.payments', organization.slug)">Pagos</inertia-link>
             <span class="text-green-light font-medium">/</span> Crear
         </h1>
         <div class="bg-white rounded shadow max-w-lg">

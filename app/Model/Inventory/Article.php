@@ -4,6 +4,7 @@ namespace App\Model\Inventory;
 
 use App\Model;
 use App\Organization;
+use App\Presenters\Article\UrlPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
@@ -11,7 +12,12 @@ class Article extends Model
     use SoftDeletes;
 
     protected $table = 'inventory_articles';
+
     protected $guarded = [];
+
+    protected $hidden = ['url'];
+
+    protected $appends = ['url'];
 
     public function setNameAttribute($value)
     {
@@ -21,6 +27,11 @@ class Article extends Model
     public function getNameAttribute($value)
     {
         return ucwords($value);
+    }
+
+    public function getUrlAttribute()
+    {
+        return new UrlPresenter($this->organization, $this);
     }
 
     public function organization()

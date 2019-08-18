@@ -65,17 +65,17 @@
         methods: {
             submit() {
                 this.sending = true
-                this.$inertia.put(this.route('person.clients.update', {'slug':this.organization.slug,'client':this.client.id}), this.form)
+                this.$inertia.put(this.route('person.clients.update', {'organization':this.organization.slug,'client':this.client.id}), this.form)
                     .then(() => this.sending = false)
             },
             destroy() {
                 if (confirm('¿Estás seguro de que quieres eliminar este cliente?')) {
-                    this.$inertia.delete(this.route('person.clients.update', {'slug':this.organization.slug,'client':this.client.id}))
+                    this.$inertia.delete(this.route('person.clients.update', {'organization':this.organization.slug,'client':this.client.id}))
                 }
             },
             restore() {
                 if (confirm('¿Estás seguro de que quieres restaurar este cliente?')) {
-                    this.$inertia.put(this.route('person.clients.restore', {'slug':this.organization.slug,'client':this.client.id}))
+                    this.$inertia.put(this.route('person.clients.restore', {'organization':this.organization.slug,'client':this.client.id}))
                 }
             }
         },

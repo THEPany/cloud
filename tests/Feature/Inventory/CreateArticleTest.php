@@ -35,7 +35,7 @@ class CreateArticleTest extends TestCase
         Bouncer::allow($this->subscription->user)->to('create', Article::class);
 
         $response = $this->actingAs($this->subscription->user)
-            ->post(route('inventory.articles.store', $this->organization->slug), [
+            ->post(route('inventory.articles.store', $this->organization), [
                 'name' => 'Articulo A',
                 'cost' => 200,
         ]);
@@ -61,7 +61,7 @@ class CreateArticleTest extends TestCase
         $this->organization->addContributor($other_subscription->user);
 
         $response = $this->withoutExceptionHandling()->actingAs($other_subscription->user)
-            ->post(route('inventory.articles.store', $this->organization->slug), [
+            ->post(route('inventory.articles.store', $this->organization), [
                 'name' => 'Articulo A',
                 'cost' => 200,
             ]);
@@ -80,7 +80,7 @@ class CreateArticleTest extends TestCase
     function guest_cannot_create_inventory_articles()
     {
         $response = $this->withExceptionHandling()
-            ->post(route('inventory.articles.store', $this->organization->slug), [
+            ->post(route('inventory.articles.store', $this->organization), [
                 'name' => 'Articulo A',
                 'cost' => 200,
             ]);
@@ -101,7 +101,7 @@ class CreateArticleTest extends TestCase
         $subscription = factory(Subscription::class)->state('active')->create();
 
         $response = $this->withoutExceptionHandling()->actingAs($subscription->user)
-            ->post(route('inventory.articles.store', $this->organization->slug), [
+            ->post(route('inventory.articles.store', $this->organization), [
                 'name' => 'Articulo A',
                 'cost' => 200,
             ]);
@@ -124,7 +124,7 @@ class CreateArticleTest extends TestCase
         ]);
 
         $response = $this->withExceptionHandling()->actingAs($this->subscription->user)
-            ->post(route('inventory.articles.store', $this->organization->slug), [
+            ->post(route('inventory.articles.store', $this->organization), [
                 'name' => 'Articulo A',
                 'cost' => 200,
             ]);

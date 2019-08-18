@@ -38,10 +38,9 @@ class ScopeBouncer
         // Here you may use whatever mechanism you use in your app
         // to determine the current tenant. To demonstrate, the
         // $tenantId is set here from the user's account_id.
-        $organization = Organization::whereSlug($request->slug)->first();
 
-        if ($organization instanceof Organization) {
-            $this->bouncer->scope()->to($organization->id);
+        if ($request->organization instanceof Organization) {
+            $this->bouncer->scope()->to($request->organization->id);
         }
 
         return $next($request);

@@ -26,7 +26,6 @@
                                 <icon class="w-5 h-5 group-hover:fill-indigo-dark fill-grey-darkest focus:fill-indigo-dark" name="cheveron-down" />
                             </div>
                             <div slot="dropdown" class="mt-2 py-2 shadow-lg bg-white rounded text-sm">
-                                <inertia-link v-if="$page.auth.user.id === $page.organization.id" class="block px-6 py-2 hover:bg-indigo hover:text-white" :href="route('apps.collaborator', $page.organization.slug)">Colaboradores</inertia-link>
                                 <inertia-link class="block px-6 py-2 hover:bg-indigo hover:text-white" :href="route('logout')" method="post">Cerrar sesión</inertia-link>
                             </div>
                         </dropdown>

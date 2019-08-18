@@ -24,8 +24,8 @@ class AssignPermissionUserTest extends TestCase
 
         $organization->addContributor($subscriptionB->user);
 
-        $response = $this->withoutExceptionHandling()->actingAs($subscriptionA->user)->post(route('apps.collaborator.permissions.store', [
-            'slug' => $organization->slug,
+        $response = $this->withoutExceptionHandling()->actingAs($subscriptionA->user)->post(route('setting.permissions.store', [
+            'organization' => $organization,
             'user' => $subscriptionB->user
         ]), [
             'permissions' => [

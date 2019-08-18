@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class ApplicationController extends Controller
 {
-    public function index($slug)
+    public function index(Organization $organization)
     {
         return Inertia::render('Cloud/Index', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail()
+            'organization' => $organization
         ]);
     }
 }

@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\Inventory;
 
 use Inertia\Inertia;
-use App\Organization;
 use Illuminate\Support\Str;
-use App\Model\Inventory\Article;
 use App\Http\Controllers\Controller;
+use App\{Organization, Model\Inventory\Article};
 use Illuminate\Support\Facades\{Request, Redirect};
+use App\Http\Requests\{StoreArticleRequest, UpdateArticleRequest};
 
 class ArticleController extends Controller
 {
     /**
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index($slug)
+    public function index(Organization $organization)
     {
         $this->authorize('view', Article::class);
 
         return Inertia::render('Inventory/Article/Index', [
             'filters' => Request::all('search', 'trashed'),
-            'organization' => $organization = Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'articles' => $organization->articles()
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
@@ -35,54 +35,46 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param \App\Organization $organization
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function create($slug)
+    public function create(Organization $organization)
     {
         $this->authorize('create', Article::class);
 
         return Inertia::render('Inventory/Article/Create', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
         ]);
     }
 
     /**
-     * @param $slug
+     * @param \App\Http\Requests\StoreArticleRequest $request
+     * @param \App\Organization $organization
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store($slug)
+    public function store(StoreArticleRequest $request, Organization $organization)
     {
         $this->authorize('create', Article::class);
 
-        $organization = Organization::whereSlug($slug)->firstOrFail();
+        $organization->articles()->create($request->validated());
 
-        $organization->articles()->create(
-            request()->validate([
-                'name' => ['required', 'string', 'min:5', 'max:100'],
-                'description' => ['nullable', 'string', 'min:20', 'max:255'],
-                'cost' => ['required', 'numeric', 'min:100', 'max:999999']
-            ])
-        );
-
-        return Redirect::route('inventory.articles', $slug)
-            ->with('success', 'Articulo creado correctamente.');
+        return Redirect::route('inventory.articles', $organization)->with('success', __('article.created'));
     }
 
     /**
-     * @param $slug
-     * @param \App\Model\Invoice\Article $article
+     * @param \App\Organization $organization
+     * @param \App\Model\Inventory\Article $article
      * @return \Inertia\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function edit($slug, Article $article)
+    public function edit(Organization $organization, Article $article)
     {
         $this->authorize('update', $article);
 
         return Inertia::render('Invoice/Article/Edit', [
-            'organization' => Organization::whereSlug($slug)->firstOrFail(),
+            'organization' => $organization,
             'article' => [
                 'id' => $article->id,
                 'name' => $article->name,
@@ -94,60 +86,48 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param $slug
-     * @param \App\Model\Invoice\Article $article
+     * @param \App\Http\Requests\UpdateArticleRequest $request
+     * @param \App\Organization $organization
+     * @param \App\Model\Inventory\Article $article
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update($slug, Article $article)
+    public function update(UpdateArticleRequest $request, Organization $organization, Article $article)
     {
         $this->authorize('update', $article);
 
-        $article->update(
-            request()->validate([
-                'name' => ['required', 'string', 'min:5', 'max:100'],
-                'description' => ['nullable', 'string', 'min:20', 'max:255'],
-                'cost' => ['required', 'numeric', 'min:100', 'max:999999']
-            ])
-        );
+        $article->update($request->validated());
 
-        return Redirect::route('inventory.articles.edit', [
-            'slug' => $slug,
-            'article' => $article
-        ])->with('success', 'Articulo actualizado correctamente.');
+        return Redirect::to($article->url->edit)->with('success', __('article.updated'));
     }
 
     /**
-     * @param $slug
-     * @param \App\Model\Invoice\Article $article
+     * @param \App\Organization $organization
+     * @param \App\Model\Inventory\Article $article
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function destroy($slug, Article $article)
+    public function destroy(Organization $organization, Article $article)
     {
         $this->authorize('delete', $article);
 
         $article->delete();
-        return Redirect::route('inventory.articles.edit', [
-            'slug' => $slug,
-            'article' => $article
-        ]);
+
+        return Redirect::to($article->url->edit);
     }
 
     /**
-     * @param $slug
-     * @param \App\Model\Invoice\Article $article
+     * @param \App\Organization $organization
+     * @param \App\Model\Inventory\Article $article
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function restore($slug, Article $article)
+    public function restore(Organization $organization, Article $article)
     {
         $this->authorize('delete', $article);
 
         $article->restore();
-        return Redirect::route('inventory.articles.edit', [
-            'slug' => $slug,
-            'article' => $article
-        ]);
+
+        return Redirect::to($article->url->edit);
     }
 }
